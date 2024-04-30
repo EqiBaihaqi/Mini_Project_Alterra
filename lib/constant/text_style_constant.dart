@@ -6,4 +6,5 @@ class TextStyleConstant {
     fontSize: 20,
   );
   static TextStyle josefinSansRegular = GoogleFonts.josefinSans();
+  static TextStyle poppinsRegular = GoogleFonts.poppins();
 }
