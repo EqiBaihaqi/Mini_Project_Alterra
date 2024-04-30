@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:your_comfort_food/constant/color_constant.dart';
+import 'package:flutter/services.dart';
 import 'package:your_comfort_food/constant/image_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/splash_page/landing_page.dart';
@@ -18,13 +18,14 @@ class _SplashScreenLogoState extends State<SplashScreenLogo> {
       Navigator.pushReplacement(context,
           MaterialPageRoute(builder: (context) => const LandingPage()));
     });
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.bottom]);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConstant.black,
       body: Center(
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

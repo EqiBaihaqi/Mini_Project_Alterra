@@ -5,4 +5,5 @@ class TextStyleConstant {
   static TextStyle pacifioRegular = GoogleFonts.pacifico(
     fontSize: 20,
   );
+  static TextStyle josefinSansRegular = GoogleFonts.josefinSans();
 }
