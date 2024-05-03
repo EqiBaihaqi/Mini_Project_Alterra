@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
-import 'package:your_comfort_food/utils/navigation_bar_provider.dart';
+import 'package:your_comfort_food/widgets/bottom_navigation_bar_view_model.dart';
 
 class BottomNavCustom extends StatelessWidget {
   final int selectedNav;

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
 import 'package:your_comfort_food/page/splash_page/logo_splash.dart';
-import 'package:your_comfort_food/utils/navigation_bar_provider.dart';
+import 'package:your_comfort_food/widgets/bottom_navigation_bar_view_model.dart';
 
 void main() {
   runApp(const MainApp());
@@ -15,7 +16,9 @@ class MainApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<BottomNavigationProvider>(
-            create: (context) => BottomNavigationProvider())
+            create: (context) => BottomNavigationProvider()),
+        ChangeNotifierProvider<HomePageViewModel>(
+            create: (context) => HomePageViewModel()),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

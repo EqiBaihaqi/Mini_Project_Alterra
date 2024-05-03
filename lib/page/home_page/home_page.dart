@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
+import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
-import 'package:your_comfort_food/widgets/bottom_navigation_bar_widget.dart';
+import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
+import 'package:your_comfort_food/page/home_page/recipe_all.dart';
+import 'package:your_comfort_food/page/home_page/recipe_dairy_free.dart';
+import 'package:your_comfort_food/page/home_page/recipe_vegan.dart';
+import 'package:your_comfort_food/widgets/category_button_widget.dart';
+import 'package:your_comfort_food/widgets/search_container_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,112 +21,157 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   void initState() {
-    super.initState();
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
         overlays: [SystemUiOverlay.bottom]);
+
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<HomePageViewModel>(context, listen: false).getRandomRecipe();
+    });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<HomePageViewModel>(context, listen: false).getVeganRecipe();
+    });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<HomePageViewModel>(context, listen: false)
+          .getDairyFreeRecipe();
+    });
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    final provider = Provider.of<HomePageViewModel>(context);
     return Scaffold(
       appBar: AppBar(
-        toolbarHeight: 75,
+        scrolledUnderElevation: 0.0,
+        toolbarHeight: 80,
         title: Text(
-          'Find Your Best Recipe !',
+          'Random Recipes for Today !',
           style: TextStyleConstant.poppinsRegular
               .copyWith(fontWeight: FontWeight.bold, fontSize: 23),
         ),
         centerTitle: true,
       ),
-      body: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // number of items in each row
-            mainAxisSpacing: 14.0, // spacing between rows
-            crossAxisSpacing: 14.0, // spacing between columns
-          ),
-          padding: const EdgeInsets.all(8.0), // padding around the grid
-          itemCount: 8, // total number of items
-          itemBuilder: (context, index) {
-            return Container(
-              width: 250,
-              height: 250,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      colorFilter: ColorFilter.mode(
-                          Colors.black.withOpacity(0.4  ), BlendMode.darken),
-                      image: const NetworkImage(
-                        'https://img.spoonacular.com/recipes/645704-556x370.jpg',
-                      ),
-                      fit: BoxFit.cover)),
-              child: Container(
-                margin: const EdgeInsets.only(
-                    left: 10, bottom: 10, right: 10, top: 10),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      body: Column(
+        children: [
+          Container(
+            margin: const EdgeInsets.only(left: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Icon(
-                          Icons.timer_sharp,
-                          color: ColorConstant.white,
-                          size: 17,
-                        ),
-                        const SizedBox(
-                          width: 3,
-                        ),
-                        Text(
-                          '20 Min',
-                          style: TextStyleConstant.poppinsRegular
-                              .copyWith(color: ColorConstant.white),
-                        ),
-                      ],
+                    SearchWidget(
+                      onTap: () {},
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Nasi Goreng Bojonegoro merah putih',
-                          style: TextStyleConstant.poppinsRegular.copyWith(
-                              color: ColorConstant.white,
-                              fontSize: 15,
-                              fontWeight: FontWeight.bold),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        const SizedBox(
-                          height: 6,
-                        ),
-                        Row(
-                          children: [
-                            Icon(
-                              Icons.food_bank_outlined,
-                              color: ColorConstant.white,
-                              size: 17,
-                            ),
-                            const SizedBox(
-                              width: 6,
-                            ),
-                            Text(
-                              '2 Serving',
-                              style: TextStyleConstant.poppinsRegular.copyWith(
-                                  color: ColorConstant.white,
-                                  fontWeight: FontWeight.w100,
-                                  fontSize: 12),
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                    Container(
+                        width: 42,
+                        height: 42,
+                        decoration: BoxDecoration(
+                            border:
+                                Border.all(color: ColorConstant.orangeColor),
+                            color: provider.isIconSearchClicked
+                                ? ColorConstant.orangeColor
+                                : Colors.transparent,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: IconButton(
+                            onPressed: () {
+                              provider.refreshRecipe();
+                            },
+                            icon: Icon(
+                              Icons.refresh_rounded,
+                              color: ColorConstant.orangeColor,
+                              size: 23,
+                            )))
                   ],
                 ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  child: Text(
+                    'Category',
+                    style: TextStyleConstant.poppinsRegular
+                        .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CategoryButtonWidget(
+                text: 'All',
+                onTap: () {
+                  provider.setAllRecipe();
+                },
+                color: provider.isAllClicked ? ColorConstant.orangeColor : null,
+                textStyle: provider.isAllClicked
+                    ? TextStyleConstant.poppinsRegular.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.whitishGray)
+                    : TextStyleConstant.poppinsRegular.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.orangeColor),
               ),
-            );
-          }),
+              const SizedBox(
+                width: 12,
+              ),
+              CategoryButtonWidget(
+                text: 'Vegan',
+                onTap: () {
+                  provider.setVeganRecipe();
+                },
+                color:
+                    provider.isVeganClicked ? ColorConstant.orangeColor : null,
+                textStyle: provider.isVeganClicked
+                    ? TextStyleConstant.poppinsRegular.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.whitishGray)
+                    : TextStyleConstant.poppinsRegular.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.orangeColor),
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              CategoryButtonWidget(
+                text: 'Dairy Free',
+                onTap: () {
+                  provider.setDairyRecipe();
+                },
+                color:
+                    provider.isDairyClicked ? ColorConstant.orangeColor : null,
+                textStyle: provider.isDairyClicked
+                    ? TextStyleConstant.poppinsRegular.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.whitishGray)
+                    : TextStyleConstant.poppinsRegular.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.orangeColor),
+              ),
+            ],
+          ),
+          const SizedBox(
+            height: 18,
+          ),
+          Expanded(child: _buildRecipeGridView(provider.selectRecipe)),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildRecipeGridView(RecipeType recipeType) {
+    return Consumer<HomePageViewModel>(
+      builder: (context, provider, child) {
+        switch (recipeType) {
+          case RecipeType.all:
+            return const RecipeAllGridView();
+          case RecipeType.vegan:
+            return const RecipeVeganGridView();
+          case RecipeType.dairyFree:
+            return const RecipeDairyFreeGridView();
+        }
+      },
     );
   }
 }
