@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:your_comfort_food/model/random_recipes_response.dart';
 import 'package:your_comfort_food/model/service/recipe_service.dart';

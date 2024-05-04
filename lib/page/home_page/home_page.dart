@@ -8,7 +8,6 @@ import 'package:your_comfort_food/page/home_page/home_category/recipe_all.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_dairy_free.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_vegan.dart';
 import 'package:your_comfort_food/widgets/category_button_widget.dart';
-import 'package:your_comfort_food/widgets/search_container_widget.dart';
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
 class HomePage extends StatefulWidget {
