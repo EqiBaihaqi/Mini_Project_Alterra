@@ -21,13 +21,8 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
       onRefresh: () async {
         provider.getRandomRecipe();
       },
-      child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // number of items in each row
-            mainAxisSpacing: 12.0, // spacing between rows
-            crossAxisSpacing: 12.0, // spacing between columns
-          ),
-          padding: const EdgeInsets.all(6.0),
+      child: ListView.builder(
+
           // padding around the grid
           itemCount: provider
               .randomRecipeResponse.recipes?.length, // total number of items
@@ -35,15 +30,19 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
             var data = provider.randomRecipeResponse.recipes?[index];
 
             if (provider.isLoadingRandomRecipe) {
-              return const ShimmerLoadingWidget(widht: 250, height: 250);
+              return const ShimmerLoadingWidget(
+                width: 315,
+                height: 190,
+              );
             } else if (provider.errorRandomRecipe != null) {
               return Center(
                 child: Text(provider.errorRandomRecipe!),
               );
             } else {
               return Container(
-                width: 250,
-                height: 250,
+                margin: const EdgeInsets.all(8),
+                width: 315,
+                height: 200,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -54,8 +53,7 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
                         ),
                         fit: BoxFit.cover)),
                 child: Container(
-                  margin: const EdgeInsets.only(
-                      left: 10, bottom: 10, right: 10, top: 10),
+                  margin: const EdgeInsets.all(10),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -97,7 +95,7 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
                             '${data?.title}',
                             style: TextStyleConstant.poppinsRegular.copyWith(
                                 color: ColorConstant.whitishGray,
-                                fontSize: 15,
+                                fontSize: 19,
                                 fontWeight: FontWeight.bold),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -110,7 +108,7 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
                               Icon(
                                 Icons.food_bank_outlined,
                                 color: ColorConstant.white,
-                                size: 17,
+                                size: 21,
                               ),
                               const SizedBox(
                                 width: 6,
@@ -121,7 +119,7 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
                                     .copyWith(
                                         color: ColorConstant.white,
                                         fontWeight: FontWeight.w100,
-                                        fontSize: 12),
+                                        fontSize: 16),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                               ),

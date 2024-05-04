@@ -15,13 +15,8 @@ class RecipeDairyFreeGridView extends StatelessWidget {
       onRefresh: () async {
         dairyFreeRecipeProvider.getDairyFreeRecipe();
       },
-      child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // number of items in each row
-            mainAxisSpacing: 12.0, // spacing between rows
-            crossAxisSpacing: 12.0, // spacing between columns
-          ),
-          padding: const EdgeInsets.all(6.0),
+      child: ListView.builder(
+
           // padding around the grid
           itemCount: dairyFreeRecipeProvider
               .dairyFreeRecipeResponse.recipes?.length, // total number of items
@@ -31,8 +26,8 @@ class RecipeDairyFreeGridView extends StatelessWidget {
 
             if (dairyFreeRecipeProvider.isLoadingDairyFreeRecipe) {
               return const ShimmerLoadingWidget(
-                widht: 250,
-                height: 250,
+                width: 315,
+                height: 200,
               );
             } else if (dairyFreeRecipeProvider.errorDairyFreeRecipe != null) {
               return Center(
@@ -40,8 +35,9 @@ class RecipeDairyFreeGridView extends StatelessWidget {
               );
             } else {
               return Container(
-                width: 250,
-                height: 250,
+                margin: const EdgeInsets.all(8),
+                width: 315,
+                height: 200,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
                     image: DecorationImage(
@@ -95,7 +91,7 @@ class RecipeDairyFreeGridView extends StatelessWidget {
                             '${data?.title}',
                             style: TextStyleConstant.poppinsRegular.copyWith(
                                 color: ColorConstant.whitishGray,
-                                fontSize: 15,
+                                fontSize: 19,
                                 fontWeight: FontWeight.bold),
                             maxLines: 2,
                             overflow: TextOverflow.ellipsis,
@@ -108,7 +104,7 @@ class RecipeDairyFreeGridView extends StatelessWidget {
                               Icon(
                                 Icons.food_bank_outlined,
                                 color: ColorConstant.white,
-                                size: 17,
+                                size: 21,
                               ),
                               const SizedBox(
                                 width: 6,
@@ -119,7 +115,7 @@ class RecipeDairyFreeGridView extends StatelessWidget {
                                     .copyWith(
                                         color: ColorConstant.white,
                                         fontWeight: FontWeight.w100,
-                                        fontSize: 12),
+                                        fontSize: 16),
                                 overflow: TextOverflow.ellipsis,
                                 maxLines: 2,
                               ),
