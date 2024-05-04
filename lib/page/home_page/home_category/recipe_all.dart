@@ -1,20 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:your_comfort_food/constant/color_constant.dart';
-import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:provider/provider.dart';
+import 'package:your_comfort_food/constant/color_constant.dart';
+import 'package:your_comfort_food/constant/image_constant.dart';
+import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
+import 'package:your_comfort_food/widgets/shimmer_loading_widget.dart';
 
-class RecipeVeganGridView extends StatelessWidget {
-  const RecipeVeganGridView({super.key});
+class RecipeAllGridView extends StatefulWidget {
+  const RecipeAllGridView({super.key});
 
   @override
+  State<RecipeAllGridView> createState() => _RecipeAllGridViewState();
+}
+
+class _RecipeAllGridViewState extends State<RecipeAllGridView> {
   @override
   Widget build(BuildContext context) {
-    final veganRecipeProvider = Provider.of<HomePageViewModel>(context);
+    final provider = Provider.of<HomePageViewModel>(context);
     return RefreshIndicator(
       onRefresh: () async {
-        veganRecipeProvider.getVeganRecipe();
+        provider.getRandomRecipe();
       },
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -24,16 +29,16 @@ class RecipeVeganGridView extends StatelessWidget {
           ),
           padding: const EdgeInsets.all(6.0),
           // padding around the grid
-          itemCount: veganRecipeProvider
-              .veganRecipeResponse.recipes?.length, // total number of items
+          itemCount: provider
+              .randomRecipeResponse.recipes?.length, // total number of items
           itemBuilder: (context, index) {
-            var data = veganRecipeProvider.veganRecipeResponse.recipes?[index];
+            var data = provider.randomRecipeResponse.recipes?[index];
 
-            if (veganRecipeProvider.isLoadingVeganRecipe) {
-              return const Center(child: CircularProgressIndicator());
-            } else if (veganRecipeProvider.errorVeganRecipe != null) {
+            if (provider.isLoadingRandomRecipe) {
+              return const ShimmerLoadingWidget(widht: 250, height: 250);
+            } else if (provider.errorRandomRecipe != null) {
               return Center(
-                child: Text(veganRecipeProvider.errorVeganRecipe!),
+                child: Text(provider.errorRandomRecipe!),
               );
             } else {
               return Container(
@@ -45,7 +50,7 @@ class RecipeVeganGridView extends StatelessWidget {
                         colorFilter: ColorFilter.mode(
                             Colors.black.withOpacity(0.4), BlendMode.darken),
                         image: NetworkImage(
-                          '${data?.image}',
+                          data?.image ?? ImageConstant.noImage,
                         ),
                         fit: BoxFit.cover)),
                 child: Container(

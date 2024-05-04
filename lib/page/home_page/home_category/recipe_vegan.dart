@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
+import 'package:provider/provider.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:your_comfort_food/widgets/shimmer_loading_widget.dart';
 
-class RecipeAllGridView extends StatefulWidget {
-  const RecipeAllGridView({super.key});
+class RecipeVeganGridView extends StatelessWidget {
+  const RecipeVeganGridView({super.key});
 
   @override
-  State<RecipeAllGridView> createState() => _RecipeAllGridViewState();
-}
-
-class _RecipeAllGridViewState extends State<RecipeAllGridView> {
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<HomePageViewModel>(context);
+    final veganRecipeProvider = Provider.of<HomePageViewModel>(context);
     return RefreshIndicator(
       onRefresh: () async {
-        provider.getRandomRecipe();
+        veganRecipeProvider.getVeganRecipe();
       },
       child: GridView.builder(
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -29,16 +24,19 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
           ),
           padding: const EdgeInsets.all(6.0),
           // padding around the grid
-          itemCount: provider
-              .randomRecipeResponse.recipes?.length, // total number of items
+          itemCount: veganRecipeProvider
+              .veganRecipeResponse.recipes?.length, // total number of items
           itemBuilder: (context, index) {
-            var data = provider.randomRecipeResponse.recipes?[index];
+            var data = veganRecipeProvider.veganRecipeResponse.recipes?[index];
 
-            if (provider.isLoadingRandomRecipe) {
-              return const ShimmerLoadingWidget(widht: 250, height: 250);
-            } else if (provider.errorRandomRecipe != null) {
+            if (veganRecipeProvider.isLoadingVeganRecipe) {
+              return const ShimmerLoadingWidget(
+                widht: 250,
+                height: 250,
+              );
+            } else if (veganRecipeProvider.errorVeganRecipe != null) {
               return Center(
-                child: Text(provider.errorRandomRecipe!),
+                child: Text(veganRecipeProvider.errorVeganRecipe!),
               );
             } else {
               return Container(
@@ -50,8 +48,7 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
                         colorFilter: ColorFilter.mode(
                             Colors.black.withOpacity(0.4), BlendMode.darken),
                         image: NetworkImage(
-                          data?.image ??
-                              'https://st4.depositphotos.com/14953852/22772/v/450/depositphotos_227724992-stock-illustration-image-available-icon-flat-vector.jpg',
+                          '${data?.image}',
                         ),
                         fit: BoxFit.cover)),
                 child: Container(

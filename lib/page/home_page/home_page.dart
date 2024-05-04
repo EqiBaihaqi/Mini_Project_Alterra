@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
-import 'package:your_comfort_food/page/home_page/recipe_all.dart';
-import 'package:your_comfort_food/page/home_page/recipe_dairy_free.dart';
-import 'package:your_comfort_food/page/home_page/recipe_vegan.dart';
+import 'package:your_comfort_food/page/home_page/home_category/recipe_all.dart';
+import 'package:your_comfort_food/page/home_page/home_category/recipe_dairy_free.dart';
+import 'package:your_comfort_food/page/home_page/home_category/recipe_vegan.dart';
 import 'package:your_comfort_food/widgets/category_button_widget.dart';
 import 'package:your_comfort_food/widgets/search_container_widget.dart';
+import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -61,9 +61,7 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    SearchWidget(
-                      onTap: () {},
-                    ),
+                    const SearchTextFormWidget(readOnly: true),
                     Container(
                         width: 42,
                         height: 42,

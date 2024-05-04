@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
+import 'package:your_comfort_food/widgets/shimmer_loading_widget.dart';
 
 class RecipeDairyFreeGridView extends StatelessWidget {
   const RecipeDairyFreeGridView({super.key});
@@ -29,7 +30,10 @@ class RecipeDairyFreeGridView extends StatelessWidget {
                 dairyFreeRecipeProvider.dairyFreeRecipeResponse.recipes?[index];
 
             if (dairyFreeRecipeProvider.isLoadingDairyFreeRecipe) {
-              return const Center(child: CircularProgressIndicator());
+              return const ShimmerLoadingWidget(
+                widht: 250,
+                height: 250,
+              );
             } else if (dairyFreeRecipeProvider.errorDairyFreeRecipe != null) {
               return Center(
                 child: Text(dairyFreeRecipeProvider.errorDairyFreeRecipe!),
