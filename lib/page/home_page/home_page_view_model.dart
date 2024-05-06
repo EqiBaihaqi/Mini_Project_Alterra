@@ -121,14 +121,6 @@ class HomePageViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
-  bool _isIconSearchClicked = false;
-  bool get isIconSearchClicked => _isIconSearchClicked;
-
-  void iconSearchClick() {
-    _isIconSearchClicked = !_isIconSearchClicked;
-    notifyListeners();
-  }
-
   bool _isDairyClicked = false;
   bool get isDairyClicked => _isDairyClicked;
   void setDairyRecipe() {
@@ -140,6 +132,7 @@ class HomePageViewModel extends ChangeNotifier {
   }
 
   void refreshRecipe() {
+    notifyListeners();
     if (_isAllClicked) {
       getRandomRecipe();
     } else if (_isVeganClicked) {

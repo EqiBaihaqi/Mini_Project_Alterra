@@ -3,21 +3,37 @@ import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 
 class SearchTextFormWidget extends StatelessWidget {
+  final double width;
+  final double height;
+  final bool autoFocus;
   final TextEditingController? controller;
-  final bool readOnly;
+  final bool? readOnly;
+  final Function()? onTap;
+  final Function(String)? onSubmitted;
   const SearchTextFormWidget(
-      {super.key, required this.readOnly, this.controller});
+      {super.key,
+      this.readOnly,
+      this.controller,
+      this.onTap,
+      this.onSubmitted,
+      required this.width,
+      required this.height,
+      required this.autoFocus});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 295,
-      height: 42,
-      margin: const EdgeInsets.only(right: 20),
+    return SizedBox(
+      width: width,
+      height: height,
       child: TextFormField(
+        autofocus: autoFocus,
+        onFieldSubmitted: onSubmitted,
+        textAlign: TextAlign.left,
         controller: controller,
         keyboardType: TextInputType.text,
+        onTap: onTap,
         decoration: InputDecoration(
+            contentPadding: const EdgeInsets.all(3.0),
             focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(12),
                 borderSide: BorderSide(
@@ -30,13 +46,14 @@ class SearchTextFormWidget extends StatelessWidget {
               color: ColorConstant.grayColor3,
               size: 30,
             ),
-            hintStyle: TextStyleConstant.poppinsRegular
-                .copyWith(color: ColorConstant.grayColor3, height: 1.2),
+            hintStyle: TextStyleConstant.poppinsRegular.copyWith(
+              color: ColorConstant.grayColor3,
+            ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),
               borderSide: BorderSide(color: ColorConstant.grayColor3),
             )),
-        readOnly: readOnly,
+        readOnly: readOnly ?? false,
       ),
     );
   }

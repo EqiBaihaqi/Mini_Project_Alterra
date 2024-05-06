@@ -1,5 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
@@ -7,6 +9,7 @@ import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_all.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_dairy_free.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_vegan.dart';
+import 'package:your_comfort_food/page/search_page/search_page.dart';
 import 'package:your_comfort_food/widgets/category_button_widget.dart';
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
@@ -60,16 +63,25 @@ class _HomePageState extends State<HomePage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    const SearchTextFormWidget(readOnly: true),
+                    SearchTextFormWidget(
+                      autoFocus: false,
+                      width: 295,
+                      height: 42,
+                      readOnly: true,
+                      onTap: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SearchPage())),
+                    ),
+                    const SizedBox(
+                      width: 20,
+                    ),
                     Container(
                         width: 42,
                         height: 42,
                         decoration: BoxDecoration(
                             border:
                                 Border.all(color: ColorConstant.orangeColor),
-                            color: provider.isIconSearchClicked
-                                ? ColorConstant.orangeColor
-                                : Colors.transparent,
                             borderRadius: BorderRadius.circular(12)),
                         child: IconButton(
                             onPressed: () {
@@ -83,11 +95,11 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(vertical: 12),
                   child: Text(
                     'Category',
                     style: TextStyleConstant.poppinsRegular
-                        .copyWith(fontSize: 20, fontWeight: FontWeight.bold),
+                        .copyWith(fontSize: 19, fontWeight: FontWeight.bold),
                   ),
                 ),
               ],
