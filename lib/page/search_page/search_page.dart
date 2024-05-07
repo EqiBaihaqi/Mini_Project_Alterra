@@ -8,7 +8,8 @@ import 'package:your_comfort_food/page/search_page/widget/search_result_widget.d
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
 class SearchPage extends StatefulWidget {
-  const SearchPage({super.key});
+  final bool autoFocus;
+  const SearchPage({super.key, required this.autoFocus});
 
   @override
   State<SearchPage> createState() => _SearchPageState();
@@ -38,7 +39,7 @@ class _SearchPageState extends State<SearchPage> {
                 Row(
                   children: [
                     SearchTextFormWidget(
-                      autoFocus: true,
+                      autoFocus: widget.autoFocus,
                       width: 275,
                       height: 42,
                       controller: provider.queryController,

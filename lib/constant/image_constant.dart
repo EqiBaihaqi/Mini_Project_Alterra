@@ -3,4 +3,8 @@ class ImageConstant {
   static String logoBlack = 'assets/images/logo_black.png';
   static String landingPage = 'assets/images/landing_page2.png';
   static String noImage = 'assets/images/no_image.jpg';
+  static String burger = 'assets/images/burger.jpg';
+  static String pizza = 'assets/images/pizza.jpg';
+  static String noodle = 'assets/images/noodle.jpg';
+  static String friedChicken = 'assets/images/fried_chicken.jpg';
 }

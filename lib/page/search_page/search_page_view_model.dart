@@ -38,6 +38,82 @@ class SearchPageViewModel extends ChangeNotifier {
     }
   }
 
+  void getBurgerSearchRecipe() async {
+    _isLoadingSearch = true;
+    _errorSearch = null;
+    _searchRecipesResponse = SearchRecipesResponse();
+
+    notifyListeners();
+    try {
+      final response = await ServiceSearch.getSearchRecipe('Burger');
+
+      _searchRecipesResponse = response;
+      notifyListeners();
+    } on DioException catch (e) {
+      _errorSearch = e.toString();
+    } finally {
+      _isLoadingSearch = false;
+      notifyListeners();
+    }
+  }
+
+  void getPizzaSearchRecipe() async {
+    _isLoadingSearch = true;
+    _errorSearch = null;
+    _searchRecipesResponse = SearchRecipesResponse();
+
+    notifyListeners();
+    try {
+      final response = await ServiceSearch.getSearchRecipe('Pizza');
+
+      _searchRecipesResponse = response;
+      notifyListeners();
+    } on DioException catch (e) {
+      _errorSearch = e.toString();
+    } finally {
+      _isLoadingSearch = false;
+      notifyListeners();
+    }
+  }
+
+  void getNoodleSearchRecipe() async {
+    _isLoadingSearch = true;
+    _errorSearch = null;
+    _searchRecipesResponse = SearchRecipesResponse();
+
+    notifyListeners();
+    try {
+      final response = await ServiceSearch.getSearchRecipe('Noodle');
+
+      _searchRecipesResponse = response;
+      notifyListeners();
+    } on DioException catch (e) {
+      _errorSearch = e.toString();
+    } finally {
+      _isLoadingSearch = false;
+      notifyListeners();
+    }
+  }
+
+  void getFriedChickenSearchRecipe() async {
+    _isLoadingSearch = true;
+    _errorSearch = null;
+    _searchRecipesResponse = SearchRecipesResponse();
+
+    notifyListeners();
+    try {
+      final response = await ServiceSearch.getSearchRecipe('Fried Chicken');
+
+      _searchRecipesResponse = response;
+      notifyListeners();
+    } on DioException catch (e) {
+      _errorSearch = e.toString();
+    } finally {
+      _isLoadingSearch = false;
+      notifyListeners();
+    }
+  }
+
   bool _isRecipe = true;
   bool get isRecipe => _isRecipe;
 
@@ -57,9 +133,8 @@ class SearchPageViewModel extends ChangeNotifier {
 
     notifyListeners();
     try {
-      print('Before Calling API');
       final response = await ServiceSearch.getIngredient(_queryController.text);
-      print('After Calling API $response');
+
       _searchIngredientResponse = response;
 
       notifyListeners();

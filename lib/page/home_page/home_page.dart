@@ -2,14 +2,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
+
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
+import 'package:your_comfort_food/constant/image_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
-import 'package:your_comfort_food/page/home_page/home_category/recipe_all.dart';
-import 'package:your_comfort_food/page/home_page/home_category/recipe_dairy_free.dart';
-import 'package:your_comfort_food/page/home_page/home_category/recipe_vegan.dart';
+import 'package:your_comfort_food/page/home_page/widgets/recipe_all.dart';
+import 'package:your_comfort_food/page/home_page/widgets/recipe_dairy_free.dart';
+import 'package:your_comfort_food/page/home_page/widgets/recipe_vegan.dart';
+import 'package:your_comfort_food/page/home_page/widgets/search_by_container_widget.dart';
 import 'package:your_comfort_food/page/search_page/search_page.dart';
+import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
 import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
@@ -42,6 +46,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomePageViewModel>(context);
+    final providerSearch = Provider.of<SearchPageViewModel>(context);
     return Scaffold(
       appBar: AppBar(
         scrolledUnderElevation: 0.0,
@@ -71,7 +76,9 @@ class _HomePageState extends State<HomePage> {
                       onTap: () => Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const SearchPage())),
+                              builder: (context) => const SearchPage(
+                                    autoFocus: true,
+                                  ))),
                     ),
                     const SizedBox(
                       width: 20,
@@ -93,6 +100,87 @@ class _HomePageState extends State<HomePage> {
                               size: 23,
                             )))
                   ],
+                ),
+                Container(
+                  margin: const EdgeInsets.symmetric(vertical: 8),
+                  child: Text(
+                    'Popular Search',
+                    style: TextStyleConstant.poppinsRegular
+                        .copyWith(fontSize: 19, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 20),
+                  child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              providerSearch.getBurgerSearchRecipe();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SearchPage(
+                                            autoFocus: false,
+                                          )));
+                            },
+                            child: SearchContainerWidGet(
+                                title: 'Burger', image: ImageConstant.burger),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              providerSearch.getFriedChickenSearchRecipe();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SearchPage(
+                                            autoFocus: false,
+                                          )));
+                            },
+                            child: SearchContainerWidGet(
+                                title: 'Fried Chicken',
+                                image: ImageConstant.friedChicken),
+                          )
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          GestureDetector(
+                            onTap: () {
+                              providerSearch.getPizzaSearchRecipe();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SearchPage(
+                                            autoFocus: false,
+                                          )));
+                            },
+                            child: SearchContainerWidGet(
+                                title: 'Pizza', image: ImageConstant.pizza),
+                          ),
+                          GestureDetector(
+                            onTap: () {
+                              providerSearch.getNoodleSearchRecipe();
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const SearchPage(
+                                            autoFocus: false,
+                                          )));
+                            },
+                            child: SearchContainerWidGet(
+                                title: 'Noodle', image: ImageConstant.noodle),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 12),
