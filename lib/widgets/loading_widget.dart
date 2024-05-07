@@ -12,8 +12,10 @@ class LoadingWIdget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-        child: LoadingAnimationWidget.inkDrop(
-            color: ColorConstant.orangeColor, size: width));
+    return Scaffold(
+      body: Center(
+          child: LoadingAnimationWidget.inkDrop(
+              color: ColorConstant.orangeColor, size: width)),
+    );
   }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
-import 'package:your_comfort_food/widgets/home_page_grid_view_widget.dart.dart';
+import 'package:your_comfort_food/page/home_page/home_category/home_page_grid_view_widget.dart.dart';
 import 'package:your_comfort_food/widgets/loading_widget.dart';
 
 class RecipeVeganGridView extends StatelessWidget {

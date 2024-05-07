@@ -10,7 +10,7 @@ import 'package:your_comfort_food/page/home_page/home_category/recipe_all.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_dairy_free.dart';
 import 'package:your_comfort_food/page/home_page/home_category/recipe_vegan.dart';
 import 'package:your_comfort_food/page/search_page/search_page.dart';
-import 'package:your_comfort_food/widgets/category_button_widget.dart';
+import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
 class HomePage extends StatefulWidget {
@@ -108,7 +108,9 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              CategoryButtonWidget(
+              ButtonCategoryWidget(
+                height: 35,
+                width: 120,
                 text: 'All',
                 onTap: () {
                   provider.setAllRecipe();
@@ -125,7 +127,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 width: 12,
               ),
-              CategoryButtonWidget(
+              ButtonCategoryWidget(
+                height: 35,
+                width: 120,
                 text: 'Vegan',
                 onTap: () {
                   provider.setVeganRecipe();
@@ -143,7 +147,9 @@ class _HomePageState extends State<HomePage> {
               const SizedBox(
                 width: 12,
               ),
-              CategoryButtonWidget(
+              ButtonCategoryWidget(
+                height: 35,
+                width: 120,
                 text: 'Dairy Free',
                 onTap: () {
                   provider.setDairyRecipe();

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:your_comfort_food/page/detail_recipe/detail_recipe_view_model.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
 import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
 import 'package:your_comfort_food/page/splash_page/logo_splash.dart';
@@ -22,6 +23,8 @@ class MainApp extends StatelessWidget {
             create: (context) => HomePageViewModel()),
         ChangeNotifierProvider<SearchPageViewModel>(
             create: (context) => SearchPageViewModel()),
+        ChangeNotifierProvider<DetailRecipeViewModel>(
+            create: (context) => DetailRecipeViewModel())
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,

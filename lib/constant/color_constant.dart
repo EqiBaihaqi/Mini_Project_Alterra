@@ -11,4 +11,5 @@ class ColorConstant {
   static Color grayColor1 = const Color(0xFF6D6D6D);
   static Color grayColor2 = const Color(0xFFD9D9D9);
   static Color grayColor3 = const Color(0xFF8B8B8B);
+  static Color grayColor4 = const Color(0xFFA9A9A9);
 }

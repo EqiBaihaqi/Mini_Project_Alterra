@@ -1,21 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 
-class CategoryButtonWidget extends StatelessWidget {
+class ButtonCategoryWidget extends StatelessWidget {
   final Function()? onTap;
   final Color? color;
   final TextStyle? textStyle;
   final String? text;
-  const CategoryButtonWidget(
-      {super.key, this.onTap, this.color, this.textStyle, this.text});
+  final double width;
+  final double height;
+  const ButtonCategoryWidget(
+      {super.key,
+      this.onTap,
+      this.color,
+      this.textStyle,
+      this.text,
+      required this.width,
+      required this.height});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: onTap,
         child: Container(
-            width: 120,
-            height: 35,
+            width: width,
+            height: height,
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 border:

@@ -5,6 +5,7 @@ import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/model/random_recipes_response.dart';
 import 'package:your_comfort_food/page/detail_recipe/detail_recipe_page.dart';
 
+
 class HomePageGridViewWidget extends StatelessWidget {
   final Function() onRefresh;
   final String? error;
@@ -37,7 +38,9 @@ class HomePageGridViewWidget extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const DetailRecipe()));
+                        builder: (context) => DetailRecipe(
+                              idRecipe: data?.id,
+                            )));
               },
               child: Container(
                 margin: const EdgeInsets.all(8),
