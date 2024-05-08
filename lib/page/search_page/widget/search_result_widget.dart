@@ -22,6 +22,12 @@ class SearchResultWidget extends StatelessWidget {
       return Center(
         child: Text(provider.errorSearch ?? ''),
       );
+    } else if (provider.isEmpty) {
+      return Expanded(
+        child: Center(
+          child: Text('${provider.queryController.text} is not found'),
+        ),
+      );
     } else {
       return Expanded(
           child: GridView.builder(

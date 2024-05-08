@@ -4,13 +4,14 @@ import 'package:your_comfort_food/model/random_recipes_response.dart';
 
 class RecipeService {
   static Dio dio = Dio();
-  static int number = 20;
+  static int number = 100;
   static Future<RandomRecipeResponse> getRandomRecipe() async {
     try {
       final response = await dio.get(
         baseUrlRandomRecipe,
         options: Options(headers: {"Content-Type": "application/json"}),
-        queryParameters: {"apiKey": apiKey, 'number': number},
+        queryParameters: {"apiKey": apiKey, 'number': number,
+        },
       );
       return RandomRecipeResponse.fromJson(response.data);
     } on DioException catch (e) {

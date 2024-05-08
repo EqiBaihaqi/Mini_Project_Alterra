@@ -1,4 +1,7 @@
-const String apiKey = "50cfc7d5d056495aba5c80d24d3dbb74";
+import 'package:your_comfort_food/ENV/env.dart';
+
+const String apiKey = Env.apiKey;
+const String geminiApiKey = 'AIzaSyBfGGcYvjUe0lPH9_H69mWdoPfPPY3OfZM';
 const String baseUrlRandomRecipe = 'https://api.spoonacular.com/recipes/random';
 const String baseUrlSearchRecipe =
     'https://api.spoonacular.com/recipes/complexSearch';

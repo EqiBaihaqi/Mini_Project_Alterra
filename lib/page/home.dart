@@ -46,7 +46,7 @@ class _HomeState extends State<Home> {
       child: Scaffold(
         extendBody: true,
         body: body[navigationProvider.currentIndex],
-        bottomNavigationBar: BottomNavCustom(),
+        bottomNavigationBar: const BottomNavCustom(),
       ),
     );
   }
