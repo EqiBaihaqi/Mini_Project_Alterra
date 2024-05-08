@@ -40,43 +40,33 @@ class _SearchPageState extends State<SearchPage> {
                   children: [
                     SearchTextFormWidget(
                       autoFocus: widget.autoFocus,
-                      width: 275,
+                      width: 315,
                       height: 42,
                       controller: provider.queryController,
                       onSubmitted: (String value) {
-                        provider.isRecipe
-                            ? provider.getSearchRecipe()
-                            : provider.getIngredient();
+                        provider.getSearchRecipe();
                       },
                     ),
                     const SizedBox(
                       width: 10,
                     ),
-                    GestureDetector(
-                      onTap: () {
-                        provider.changeOptionSearch();
-                      },
-                      child: Container(
+                    Container(
+                        margin: const EdgeInsets.only(left: 10),
+                        width: 42,
+                        height: 42,
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: provider.isRecipe
-                              ? ColorConstant.orangeColor2
-                              : ColorConstant.grayColor,
-                        ),
-                        width: 95,
-                        height: 37,
-                        child: Align(
-                            alignment: Alignment.center,
-                            child: Text(
-                              provider.isRecipe ? 'Recipe' : 'Ingredient',
-                              style: TextStyleConstant.poppinsRegular.copyWith(
-                                fontWeight: FontWeight.bold,
-                                color: ColorConstant.whitishGray,
-                                fontSize: 12,
-                              ),
-                            )),
-                      ),
-                    ),
+                            border:
+                                Border.all(color: ColorConstant.orangeColor),
+                            borderRadius: BorderRadius.circular(12)),
+                        child: IconButton(
+                            onPressed: () {
+                              provider.getSearchRecipe();
+                            },
+                            icon: Icon(
+                              Icons.refresh_rounded,
+                              color: ColorConstant.orangeColor,
+                              size: 23,
+                            )))
                   ],
                 ),
                 Container(

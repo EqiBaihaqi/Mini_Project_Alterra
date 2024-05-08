@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:your_comfort_food/model/search_ingredient_response.dart';
+
 import 'package:your_comfort_food/model/search_recipes_response.dart';
 import 'package:your_comfort_food/model/service/search_recipe_service.dart';
+
 
 class SearchPageViewModel extends ChangeNotifier {
   final TextEditingController _queryController = TextEditingController();
@@ -114,36 +115,7 @@ class SearchPageViewModel extends ChangeNotifier {
     }
   }
 
-  bool _isRecipe = true;
-  bool get isRecipe => _isRecipe;
 
-  void changeOptionSearch() {
-    _isRecipe = !_isRecipe;
-    notifyListeners();
-  }
 
-  SearchIngredientResponse _searchIngredientResponse =
-      SearchIngredientResponse();
-  SearchIngredientResponse get searchIngredientResponse =>
-      _searchIngredientResponse;
-  void getIngredient() async {
-    _isLoadingSearch = true;
-    _errorSearch = null;
-    _searchIngredientResponse = SearchIngredientResponse();
-
-    notifyListeners();
-    try {
-      final response = await ServiceSearch.getIngredient(_queryController.text);
-
-      _searchIngredientResponse = response;
-
-      notifyListeners();
-    } on DioException catch (e) {
-      _errorSearch = e.toString();
-      notifyListeners();
-    } finally {
-      _isLoadingSearch = false;
-      notifyListeners();
-    }
-  }
+ 
 }

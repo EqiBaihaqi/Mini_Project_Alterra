@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
-import 'package:your_comfort_food/constant/constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/detail_recipe/detail_recipe_page.dart';
 import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
@@ -35,16 +34,15 @@ class SearchResultWidget extends StatelessWidget {
         itemCount: provider.searchRecipesResponse.results?.length ?? 0,
         itemBuilder: (context, index) {
           var data = provider.searchRecipesResponse.results?[index];
-          var dataIngredient =
-              provider.searchIngredientResponse.results?[index];
 
           return GestureDetector(
             onTap: () {
-              
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => DetailRecipe(idRecipe: data?.id,)));
+                      builder: (context) => DetailRecipe(
+                            idRecipe: data?.id,
+                          )));
             },
             child: Container(
               width: 315,
@@ -53,9 +51,7 @@ class SearchResultWidget extends StatelessWidget {
                   image: DecorationImage(
                       colorFilter: ColorFilter.mode(
                           Colors.black.withOpacity(0.4), BlendMode.darken),
-                      image: NetworkImage(provider.isRecipe
-                          ? data?.image ?? ''
-                          : '$baseUrlImageIngredient${dataIngredient?.image}'),
+                      image: NetworkImage(data?.image ?? ''),
                       fit: BoxFit.cover),
                   borderRadius: BorderRadius.circular(10)),
               child: Container(
@@ -68,9 +64,7 @@ class SearchResultWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          provider.isRecipe
-                              ? data?.title ?? ''
-                              : dataIngredient?.name ?? '',
+                          data?.title ?? '',
                           style: TextStyleConstant.poppinsRegular.copyWith(
                               color: ColorConstant.whitishGray,
                               fontSize: 15,

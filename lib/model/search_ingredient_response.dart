@@ -24,16 +24,16 @@ class SearchIngredientResponse {
   });
 
   factory SearchIngredientResponse.fromJson(Map<String, dynamic> json) {
-  return SearchIngredientResponse(
-    results: (json["results"] as List<dynamic>?)
-        ?.map((result) => SearchIngredientResult.fromJson(result))
-        .toList(),
-    offset: json["offset"],
-    number: json["number"],
-    totalResults: json["totalResults"],
-  );
-}
-
+    return SearchIngredientResponse(
+      results: (json["results"] as List<dynamic>?)
+          ?.map((result) =>
+              SearchIngredientResult.fromJson(result as Map<String, dynamic>))
+          .toList(),
+      offset: json["offset"],
+      number: json["number"],
+      totalResults: json["totalResults"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "results": results == null
