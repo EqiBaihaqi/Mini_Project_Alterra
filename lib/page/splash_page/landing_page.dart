@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/image_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
-import 'package:your_comfort_food/page/home_page/home_page.dart';
+import 'package:your_comfort_food/page/home.dart';
+
 
 class LandingPage extends StatefulWidget {
   const LandingPage({super.key});
@@ -84,7 +85,7 @@ class _LandingPageState extends State<LandingPage> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const HomePage()));
+                              builder: (context) => const Home()));
                     },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(

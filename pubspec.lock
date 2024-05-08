@@ -169,6 +169,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.1.0"
+  floating_navigation_bar:
+    dependency: "direct main"
+    description:
+      name: floating_navigation_bar
+      sha256: "4fdd6092cd5bc356716bcf0211b6efec5690beb6b0a1c60a1e6b1ad74aadccc5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.5"
   flutter:
     dependency: "direct main"
     description: flutter
@@ -468,10 +476,10 @@ packages:
     dependency: transitive
     description:
       name: path_provider_foundation
-      sha256: "5a7999be66e000916500be4f15a3633ebceb8302719b47b9cc49ce924125350f"
+      sha256: f234384a3fdd67f989b4d54a5d73ca2a6c422fa55ae694381ae0f4375cd1ea16
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.2"
+    version: "2.4.0"
   path_provider_linux:
     dependency: transitive
     description:
@@ -536,6 +544,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.27.7"
+  salomon_bottom_bar:
+    dependency: "direct main"
+    description:
+      name: salomon_bottom_bar
+      sha256: e20abf2e449749432223a8b4e6647c212eef6c2b638e0ed8cc92eff9529c2b48
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.3.2"
   shared_preferences:
     dependency: "direct main"
     description:

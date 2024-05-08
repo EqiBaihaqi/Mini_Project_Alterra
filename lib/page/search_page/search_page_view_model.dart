@@ -5,9 +5,8 @@ import 'package:flutter/widgets.dart';
 import 'package:your_comfort_food/model/search_recipes_response.dart';
 import 'package:your_comfort_food/model/service/search_recipe_service.dart';
 
-
 class SearchPageViewModel extends ChangeNotifier {
-  final TextEditingController _queryController = TextEditingController();
+  TextEditingController _queryController = TextEditingController();
   TextEditingController get queryController => _queryController;
 
   SearchRecipesResponse _searchRecipesResponse = SearchRecipesResponse();
@@ -40,6 +39,7 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getBurgerSearchRecipe() async {
+    _queryController.text = '';
     _isLoadingSearch = true;
     _errorSearch = null;
     _searchRecipesResponse = SearchRecipesResponse();
@@ -59,6 +59,7 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getPizzaSearchRecipe() async {
+    _queryController.text = '';
     _isLoadingSearch = true;
     _errorSearch = null;
     _searchRecipesResponse = SearchRecipesResponse();
@@ -78,6 +79,7 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getNoodleSearchRecipe() async {
+    _queryController.text = '';
     _isLoadingSearch = true;
     _errorSearch = null;
     _searchRecipesResponse = SearchRecipesResponse();
@@ -114,8 +116,4 @@ class SearchPageViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
-
-
-
- 
 }

@@ -26,7 +26,6 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
       );
     } else {
       return HomePageGridViewWidget(
-       
         onRefresh: () {
           provider.getRandomRecipe();
         },

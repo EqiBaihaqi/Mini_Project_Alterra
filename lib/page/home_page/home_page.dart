@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
@@ -15,37 +14,16 @@ import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
 import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
-
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<HomePageViewModel>(context, listen: false).getRandomRecipe();
-    });
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<HomePageViewModel>(context, listen: false).getVeganRecipe();
-    });
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      Provider.of<HomePageViewModel>(context, listen: false)
-          .getDairyFreeRecipe();
-    });
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomePageViewModel>(context);
     final providerSearch = Provider.of<SearchPageViewModel>(context);
     return Scaffold(
+      extendBody: true,
       appBar: AppBar(
         scrolledUnderElevation: 0.0,
         toolbarHeight: 80,
