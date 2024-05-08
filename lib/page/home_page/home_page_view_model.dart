@@ -132,13 +132,15 @@ class HomePageViewModel extends ChangeNotifier {
   }
 
   void refreshRecipe() {
-    notifyListeners();
     if (_isAllClicked) {
       getRandomRecipe();
+      notifyListeners();
     } else if (_isVeganClicked) {
       getVeganRecipe();
+      notifyListeners();
     } else if (_isDairyClicked) {
       getDairyFreeRecipe();
+      notifyListeners();
     }
 
     notifyListeners();

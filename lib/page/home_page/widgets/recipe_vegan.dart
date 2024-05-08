@@ -11,7 +11,7 @@ class RecipeVeganGridView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomePageViewModel>(context);
-    if (provider.isLoadingDairyFreeRecipe) {
+    if (provider.isLoadingVeganRecipe) {
       return const LoadingWIdget(width: 50);
     } else if (provider.errorVeganRecipe != null) {
       return Center(

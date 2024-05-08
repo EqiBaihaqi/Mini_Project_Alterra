@@ -1,7 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
@@ -104,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                 Container(
                   margin: const EdgeInsets.symmetric(vertical: 8),
                   child: Text(
-                    'Popular Search',
+                    'Popular Recipe',
                     style: TextStyleConstant.poppinsRegular
                         .copyWith(fontSize: 19, fontWeight: FontWeight.bold),
                   ),
