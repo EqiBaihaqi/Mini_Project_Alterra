@@ -76,6 +76,14 @@ class DetailRecipeViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetType() {
+    _selectType = DetailRecipeType.description;
+    _isIngredients = false;
+    _isInstruction = false;
+    _isDescription = true;
+    notifyListeners();
+  }
+
   NutritionRecipeResponse _nutritionRecipeResponse = NutritionRecipeResponse();
   NutritionRecipeResponse get nutritionRecipeResponse =>
       _nutritionRecipeResponse;

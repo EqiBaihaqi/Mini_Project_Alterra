@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/model/random_recipes_response.dart';
 import 'package:your_comfort_food/page/detail_recipe/detail_recipe_page.dart';
+import 'package:your_comfort_food/page/detail_recipe/detail_recipe_view_model.dart';
+import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
 
 class HomePageGridViewWidget extends StatelessWidget {
   final String? error;
@@ -19,6 +22,7 @@ class HomePageGridViewWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<DetailRecipeViewModel>(context);
     return ListView.builder(
 
         // padding around the grid
@@ -34,6 +38,7 @@ class HomePageGridViewWidget extends StatelessWidget {
                       builder: (context) => DetailRecipe(
                             idRecipe: data?.id,
                           )));
+              provider.resetType();
             },
             child: Container(
               margin: const EdgeInsets.all(8),
