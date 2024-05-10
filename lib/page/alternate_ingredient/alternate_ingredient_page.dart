@@ -4,6 +4,7 @@ import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/image_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/alternate_ingredient/alternate_ingredient_view_model.dart';
+import 'package:your_comfort_food/page/alternate_ingredient/widgets/response_ai.dart';
 
 class AlternateIngredientPage extends StatefulWidget {
   const AlternateIngredientPage({super.key});
@@ -98,19 +99,13 @@ class _AlternateIngredientPageState extends State<AlternateIngredientPage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 30, right: 30, top: 26),
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: ColorConstant.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child: Center(
-                      child: Text(
-                    provider.response ?? '',
-                    style:
-                        TextStyleConstant.poppinsRegular.copyWith(fontSize: 25),
-                  )),
-                )
+                    margin: const EdgeInsets.only(left: 30, right: 30, top: 26),
+                    width: double.infinity,
+                    height: 300,
+                    decoration: BoxDecoration(
+                        color: ColorConstant.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const ResponseAI())
               ],
             ),
           ),

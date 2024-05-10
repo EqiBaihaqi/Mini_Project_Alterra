@@ -42,7 +42,7 @@ class IngredientListView extends StatelessWidget {
                               '$baseUrlImageIngredient${data?.image}'))),
                 ),
                 title: Text(
-                  data?.aisle ?? '',
+                  data?.name ?? '',
                   style: TextStyleConstant.poppinsRegular.copyWith(
                       color: ColorConstant.black,
                       fontSize: 18,
