@@ -44,7 +44,22 @@ class SearchPageViewModel extends ChangeNotifier {
     }
   }
 
+  bool _isBurger = false;
+  bool get isBurger => _isBurger;
+
+  bool _isPizza = false;
+  bool get isPizza => _isPizza;
+
+  bool _isFriedChick = false;
+  bool get isFriedChick => _isFriedChick;
+
+  bool _isNoodle = false;
+  bool get isNoodle => _isNoodle;
   void getBurgerSearchRecipe() async {
+    _isPizza = false;
+    _isFriedChick = false;
+    _isNoodle = false;
+    _isBurger = true;
     _isEmpty = false;
     _queryController.text = '';
     _isLoadingSearch = true;
@@ -69,6 +84,10 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getPizzaSearchRecipe() async {
+    _isPizza = true;
+    _isFriedChick = false;
+    _isNoodle = false;
+    _isBurger = false;
     _isEmpty = false;
     _queryController.text = '';
     _isLoadingSearch = true;
@@ -93,6 +112,10 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getNoodleSearchRecipe() async {
+    _isPizza = false;
+    _isFriedChick = false;
+    _isNoodle = true;
+    _isBurger = false;
     _isEmpty = false;
     _queryController.text = '';
     _isLoadingSearch = true;
@@ -117,6 +140,10 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getFriedChickenSearchRecipe() async {
+    _isPizza = false;
+    _isFriedChick = true;
+    _isNoodle = false;
+    _isBurger = false;
     _isEmpty = false;
     _isLoadingSearch = true;
     _errorSearch = null;
@@ -137,5 +164,18 @@ class SearchPageViewModel extends ChangeNotifier {
       _isLoadingSearch = false;
       notifyListeners();
     }
+  }
+
+  void popularRecipeRefresh() {
+    if (_isBurger == true) {
+      getBurgerSearchRecipe();
+    } else if (_isFriedChick == true) {
+      getFriedChickenSearchRecipe();
+    } else if (_isNoodle == true) {
+      getNoodleSearchRecipe();
+    } else {
+      getPizzaSearchRecipe();
+    }
+    notifyListeners();
   }
 }

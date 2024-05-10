@@ -18,9 +18,6 @@ class RecipeDairyFreeGridView extends StatelessWidget {
       );
     } else {
       return HomePageGridViewWidget(
-        onRefresh: () {
-          provider.getDairyFreeRecipe();
-        },
         dataApi: provider.dairyFreeRecipeResponse,
         dataLength: provider.dairyFreeRecipeResponse.recipes?.length,
         error: provider.errorDairyFreeRecipe,

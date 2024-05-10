@@ -19,9 +19,6 @@ class RecipeVeganGridView extends StatelessWidget {
       );
     } else {
       return HomePageGridViewWidget(
-        onRefresh: () {
-          provider.getVeganRecipe();
-        },
         dataApi: provider.veganRecipeResponse,
         dataLength: provider.veganRecipeResponse.recipes?.length,
         error: provider.errorVeganRecipe,

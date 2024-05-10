@@ -27,7 +27,7 @@ class NutritionContentWidget extends StatelessWidget {
               'Calories',
               style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 16),
             ),
-            trailing: Text('${data.calories}g'),
+            trailing: Text('${data.calories}'),
           ),
           ListTile(
             leading: const Iconify(
@@ -36,7 +36,7 @@ class NutritionContentWidget extends StatelessWidget {
             ),
             title: Text('Carbohydrates',
                 style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 16)),
-            trailing: Text('${data.carbs}g'),
+            trailing: Text('${data.carbs}'),
           ),
           ListTile(
             leading: const Iconify(
@@ -45,7 +45,7 @@ class NutritionContentWidget extends StatelessWidget {
             ),
             title: Text('Protein',
                 style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 16)),
-            trailing: Text('${data.protein}g'),
+            trailing: Text('${data.protein}'),
           ),
           ListTile(
             leading: const Iconify(
@@ -54,7 +54,7 @@ class NutritionContentWidget extends StatelessWidget {
             ),
             title: Text('Fat',
                 style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 16)),
-            trailing: Text('${data.fat}g'),
+            trailing: Text('${data.fat}'),
           ),
           Container(
             margin: const EdgeInsets.only(left: 6, top: 4),
@@ -95,7 +95,7 @@ class NutritionContentWidget extends StatelessWidget {
                             fontWeight: FontWeight.bold, fontSize: 16),
                       ),
                       Text(
-                        'Amount : ${dataGood?.amount}g/${dataGood?.percentOfDailyNeeds}% a day',
+                        'Amount : ${dataGood?.amount}/${dataGood?.percentOfDailyNeeds}% a day',
                         style: TextStyleConstant.poppinsRegular,
                       ),
                       const Divider(),
