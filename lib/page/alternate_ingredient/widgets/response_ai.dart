@@ -22,11 +22,17 @@ class _ResponseAIState extends State<ResponseAI> {
         ),
       );
     } else {
-      return Center(
-          child: Text(
-        provider.response ?? '',
-        style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 25),
-      ));
+      return Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Center(
+            child: Text(
+          provider.response ?? '',
+          textAlign: TextAlign.center,
+          style: TextStyleConstant.poppinsRegular.copyWith(
+            fontSize: 25,
+          ),
+        )),
+      );
     }
   }
 }
