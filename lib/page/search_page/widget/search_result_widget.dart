@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
+import 'package:your_comfort_food/constant/constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/detail_recipe/detail_recipe_page.dart';
 import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
@@ -57,7 +58,7 @@ class SearchResultWidget extends StatelessWidget {
                   image: DecorationImage(
                       colorFilter: ColorFilter.mode(
                           Colors.black.withOpacity(0.4), BlendMode.darken),
-                      image: NetworkImage(data?.image ?? ''),
+                      image: NetworkImage(data?.image ?? noImageUrl),
                       fit: BoxFit.cover),
                   borderRadius: BorderRadius.circular(10)),
               child: Container(

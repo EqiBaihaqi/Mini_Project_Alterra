@@ -12,8 +12,14 @@ class IngredientListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<DetailRecipeViewModel>(context);
 
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(8.0),
+      margin: const EdgeInsets.only(top: 8),
+      height: 320,
+      width: double.infinity,
+      decoration: BoxDecoration(
+          border: Border.all(color: ColorConstant.orangeColor),
+          borderRadius: BorderRadius.circular(10)),
       child: ListView.builder(
         padding: const EdgeInsets.all(0),
         physics: const ClampingScrollPhysics(),
@@ -42,7 +48,7 @@ class IngredientListView extends StatelessWidget {
                               '$baseUrlImageIngredient${data?.image}'))),
                 ),
                 title: Text(
-                  data?.aisle ?? '',
+                  data?.name ?? '',
                   style: TextStyleConstant.poppinsRegular.copyWith(
                       color: ColorConstant.black,
                       fontSize: 18,
@@ -51,7 +57,7 @@ class IngredientListView extends StatelessWidget {
                 trailing: Text(
                   '${data?.amount}g',
                   style: TextStyleConstant.poppinsRegular
-                      .copyWith(color: ColorConstant.grayColor4, fontSize: 15),
+                      .copyWith(color: ColorConstant.grayColor3, fontSize: 15),
                 ),
               ),
             ),

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import 'package:provider/provider.dart';
@@ -9,6 +8,8 @@ import 'package:your_comfort_food/page/detail_recipe/detail_recipe_view_model.da
 import 'package:your_comfort_food/page/detail_recipe/widgets/description_recipe.dart';
 import 'package:your_comfort_food/page/detail_recipe/widgets/ingredient_list_view.dart';
 import 'package:your_comfort_food/page/detail_recipe/widgets/instruction_recipe.dart';
+import 'package:your_comfort_food/page/detail_recipe/widgets/nutrition_information_widget.dart';
+
 import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/loading_widget.dart';
 
@@ -27,6 +28,10 @@ class _DetailRecipeState extends State<DetailRecipe> {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<DetailRecipeViewModel>(context, listen: false)
           .getDetailRecipe(idRecipe: widget.idRecipe);
+    });
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<DetailRecipeViewModel>(context, listen: false)
+          .getNutrition(widget.idRecipe);
     });
   }
 
@@ -61,7 +66,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
           ),
         ),
         title: Text(
-          'Detail',
+          'Details',
           style: TextStyleConstant.poppinsRegular.copyWith(
               color: ColorConstant.white,
               fontWeight: FontWeight.bold,
@@ -158,8 +163,38 @@ class _DetailRecipeState extends State<DetailRecipe> {
                 ],
               ),
             ),
+            Align(
+              alignment: Alignment.centerLeft,
+              child: TextButton(
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) => AlertDialog(
+                              title: Text(
+                                'Nutrition Information',
+                                style: TextStyleConstant.josefinSansRegular
+                                    .copyWith(fontWeight: FontWeight.bold),
+                              ),
+                              content: const NutritionInformation(),
+                              actions: [
+                                TextButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text('Close'))
+                              ],
+                            ));
+                  },
+                  child: Text(
+                    'Nutrition Information',
+                    style: TextStyleConstant.poppinsRegular.copyWith(
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                        color: ColorConstant.orangeColor),
+                  )),
+            ),
             Container(
-              margin: const EdgeInsets.only(top: 14, right: 8, left: 8),
+              margin: const EdgeInsets.only(top: 0, right: 8, left: 8),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -217,7 +252,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
                 ],
               ),
             ),
-            Expanded(child: _buildDetailRecipe(provider.selectType)),
+            _buildDetailRecipe(provider.selectType),
           ],
         ),
       ),

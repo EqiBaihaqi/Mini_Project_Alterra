@@ -16,13 +16,15 @@ dependencies:
   dio: ^5.4.3+1
   shimmer: ^3.0.0
   loading_animation_widget: ^1.2.1
-  flutter_widget_from_html: ^0.15.0
+  flutter_widget_from_html: ^0.9.1
   salomon_bottom_bar: ^3.3.2
   floating_navigation_bar: ^0.0.5
   envied: ^0.5.4+1
   envied_generator: ^0.5.4+1
   build_runner: ^2.4.9
   flutter_gemini: ^2.0.3
+  iconify_flutter: ^0.0.5
+  flutter_svg: ^1.1.5
 
 dev_dependencies:
   flutter_test:

@@ -6,8 +6,8 @@ class AlternateIngredientViewModel extends ChangeNotifier {
   String? _response;
   String? get response => _response;
 
-  bool? _isLoading;
-  bool? get isLoading => _isLoading;
+  bool _isLoading = false;
+  bool get isLoading => _isLoading;
 
   String? _errorMessage;
   String? get errorMessage => _errorMessage;

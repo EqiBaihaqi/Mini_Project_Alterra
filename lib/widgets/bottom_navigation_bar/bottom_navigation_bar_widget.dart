@@ -6,6 +6,7 @@ import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/widgets/bottom_navigation_bar/bottom_navigation_bar_view_model.dart';
 import 'package:floating_navigation_bar/floating_navigation_bar.dart';
 
+
 class BottomNavCustom extends StatelessWidget {
   const BottomNavCustom({
     super.key,
@@ -31,7 +32,7 @@ class BottomNavCustom extends StatelessWidget {
           },
           items: [
             NavBarItems(
-              icon: Icons.home_filled,
+              icon: Icons.home,
               title: '',
             ),
             NavBarItems(
