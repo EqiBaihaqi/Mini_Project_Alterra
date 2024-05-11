@@ -6,7 +6,7 @@ import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/model/random_recipes_response.dart';
 import 'package:your_comfort_food/page/detail_recipe/detail_recipe_page.dart';
 import 'package:your_comfort_food/page/detail_recipe/detail_recipe_view_model.dart';
-import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
+
 
 class HomePageGridViewWidget extends StatelessWidget {
   final String? error;
