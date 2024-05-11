@@ -27,7 +27,7 @@ class _AlternateIngredientPageState extends State<AlternateIngredientPage> {
     var provider = Provider.of<AlternateIngredientViewModel>(context);
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
@@ -50,9 +50,10 @@ class _AlternateIngredientPageState extends State<AlternateIngredientPage> {
                     Colors.black.withOpacity(0.4), BlendMode.darken),
                 fit: BoxFit.cover,
                 image: AssetImage(ImageConstant.backgroundIngredient))),
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.only(top: 160),
+        child: Container(
+          margin: const EdgeInsets.only(top: 160),
+          child: SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 Text(

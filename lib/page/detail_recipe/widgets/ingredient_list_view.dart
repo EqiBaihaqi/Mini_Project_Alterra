@@ -51,7 +51,7 @@ class IngredientListView extends StatelessWidget {
                 trailing: Text(
                   '${data?.amount}g',
                   style: TextStyleConstant.poppinsRegular
-                      .copyWith(color: ColorConstant.grayColor4, fontSize: 15),
+                      .copyWith(color: ColorConstant.grayColor1, fontSize: 15),
                 ),
               ),
             ),

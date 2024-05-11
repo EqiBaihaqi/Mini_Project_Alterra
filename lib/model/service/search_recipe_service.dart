@@ -11,10 +11,7 @@ class ServiceSearch {
           options: Options(
             headers: {"Content-Type": "application/json"},
           ),
-          queryParameters: {
-            "apiKey": apiKey,
-            "query": query,
-          });
+          queryParameters: {"apiKey": apiKey, "query": query, "number": 25});
 
       return SearchRecipesResponse.fromJson(response.data);
     } on DioException catch (e) {

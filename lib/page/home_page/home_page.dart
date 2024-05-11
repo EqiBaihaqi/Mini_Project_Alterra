@@ -28,11 +28,10 @@ class HomePage extends StatelessWidget {
         scrolledUnderElevation: 0.0,
         toolbarHeight: 80,
         title: Text(
-          'Random Recipes for Today !',
+          'Find Your Comfort Food',
           style: TextStyleConstant.poppinsRegular
               .copyWith(fontWeight: FontWeight.bold, fontSize: 23),
         ),
-        centerTitle: true,
       ),
       body: Column(
         children: [
