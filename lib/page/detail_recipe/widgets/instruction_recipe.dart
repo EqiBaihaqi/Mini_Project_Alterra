@@ -15,7 +15,7 @@ class InstructionRecipe extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       width: double.infinity,
-      height: double.infinity,
+      height: 300,
       child: SingleChildScrollView(
         child: Column(
           children: [

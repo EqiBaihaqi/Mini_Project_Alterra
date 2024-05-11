@@ -1,8 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:your_comfort_food/model/detail_recipe_response.dart';
+import 'package:your_comfort_food/model/equipment_response.dart';
 import 'package:your_comfort_food/model/nutrition_recipe_response.dart';
 import 'package:your_comfort_food/model/service/detail_recipe_service.dart';
+import 'package:your_comfort_food/model/service/equipment_service.dart';
 import 'package:your_comfort_food/model/service/nutrition_recipe.dart';
 
 enum DetailRecipeType {
@@ -101,4 +103,18 @@ class DetailRecipeViewModel extends ChangeNotifier {
       throw e.toString();
     }
   }
+  
+EquipmentResponse _equipmentResponse = EquipmentResponse();
+EquipmentResponse get equipmentResponse => _equipmentResponse;
+
+void getEquipment(int? idRecipe) async {
+  try {
+    final response = await EquipmentService.getNutrition(idRecipe);
+
+    _equipmentResponse = response;
+
+  } on DioException catch (e) {
+    throw e.toString();
+  }
+}
 }

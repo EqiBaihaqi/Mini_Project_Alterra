@@ -11,3 +11,5 @@ const String noImageUrl =
     'https://static.vecteezy.com/system/resources/previews/005/337/799/original/icon-image-not-found-free-vector.jpg';
 const String baseUrlImageIngredient =
     'https://img.spoonacular.com/ingredients_100x100/';
+const String baseUrlEquipment =
+    'https://img.spoonacular.com/equipment_100x100/';
