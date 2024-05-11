@@ -17,6 +17,7 @@ class _Screen3State extends State<Screen3> {
   Widget build(BuildContext context) {
     return Container(
       color: ColorConstant.whitishGray,
+      margin: const EdgeInsets.symmetric(horizontal: 22),
       child: Column(
         children: [
           Container(
@@ -27,6 +28,7 @@ class _Screen3State extends State<Screen3> {
             margin: const EdgeInsets.only(top: 10),
             child: Text(
               'Whip Up Your Favorite Recipe!',
+              textAlign: TextAlign.center,
               style: TextStyleConstant.pacifioRegular.copyWith(fontSize: 27),
             ),
           ),

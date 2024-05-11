@@ -16,6 +16,7 @@ class _Screen1State extends State<Screen1> {
   @override
   Widget build(BuildContext context) {
     return Container(
+       margin: const EdgeInsets.symmetric(horizontal: 22),
       color: ColorConstant.whitishGray,
       child: Column(
         children: [

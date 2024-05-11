@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/page/alternate_ingredient/alternate_ingredient_page.dart';
 import 'package:your_comfort_food/page/home_page/home_page.dart';
@@ -18,9 +18,6 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
-
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       Provider.of<HomePageViewModel>(context, listen: false).getRandomRecipe();
     });

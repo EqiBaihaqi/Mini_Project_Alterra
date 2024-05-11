@@ -15,6 +15,7 @@ class _Screen2State extends State<Screen2> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 22),
       color: ColorConstant.whitishGray,
       child: Column(
         children: [
@@ -26,7 +27,7 @@ class _Screen2State extends State<Screen2> {
             ),
           ),
           Container(
-              margin: const EdgeInsets.only(top: 40),
+              margin: const EdgeInsets.only(top: 20),
               child: Lottie.asset(AnimationConstant.cook,
                   height: 350, width: 350)),
           Padding(
