@@ -8,6 +8,7 @@ import 'package:your_comfort_food/page/search_page/search_page.dart';
 import 'package:your_comfort_food/widgets/bottom_navigation_bar/bottom_navigation_bar_view_model.dart';
 import 'package:your_comfort_food/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
 
+
 class Home extends StatefulWidget {
   const Home({super.key});
 
@@ -39,12 +40,10 @@ class _HomeState extends State<Home> {
       const SearchPage(autoFocus: false),
       const AlternateIngredientPage(),
     ];
-    return SafeArea(
-      child: Scaffold(
-        extendBody: true,
-        body: body[navigationProvider.currentIndex],
-        bottomNavigationBar: const BottomNavCustom(),
-      ),
+    return Scaffold(
+      extendBody: true,
+      body: body[navigationProvider.currentIndex],
+      bottomNavigationBar: const BottomNavCustom(),
     );
   }
 }

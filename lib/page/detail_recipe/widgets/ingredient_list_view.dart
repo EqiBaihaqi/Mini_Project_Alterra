@@ -14,7 +14,7 @@ class IngredientListView extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Container(
+      child: SizedBox(
         height: 300,
         child: ListView.builder(
           padding: const EdgeInsets.all(0),

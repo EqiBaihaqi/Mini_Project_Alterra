@@ -8,30 +8,97 @@ import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
 import 'package:your_comfort_food/page/home_page/widgets/recipe_all.dart';
 import 'package:your_comfort_food/page/home_page/widgets/recipe_dairy_free.dart';
 import 'package:your_comfort_food/page/home_page/widgets/recipe_vegan.dart';
-import 'package:your_comfort_food/page/home_page/widgets/search_by_container_widget.dart';
+import 'package:your_comfort_food/page/home_page/widgets/search_container_widget.dart';
+import 'package:your_comfort_food/page/login_page/login_page.dart';
+import 'package:your_comfort_food/page/login_page/login_view_model.dart';
 import 'package:your_comfort_food/page/search_page/search_page.dart';
 import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
 import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/search_text_form_widget.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      Provider.of<LoginPageViewModel>(context, listen: false).getUsername();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<HomePageViewModel>(context);
     final providerSearch = Provider.of<SearchPageViewModel>(context);
+    final providerLogin = Provider.of<LoginPageViewModel>(context);
+
     return Scaffold(
+      backgroundColor: ColorConstant.whitishGray,
       extendBody: true,
       appBar: AppBar(
         scrolledUnderElevation: 0.0,
         toolbarHeight: 80,
         title: Text(
-          'Find Your Comfort Food',
+          'Welcome Back \n${providerLogin.userName}!',
           style: TextStyleConstant.poppinsRegular
               .copyWith(fontWeight: FontWeight.bold, fontSize: 23),
         ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 30),
+            child: GestureDetector(
+              onTap: () {
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: const Text('Log Out'),
+                      content: const Text('Are You Sure, You Want to Log Out?'),
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            providerLogin.logOut();
+                            Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const LoginPage()),
+                                (route) => false);
+                          },
+                          child: const Text('Log Out'),
+                        ),
+                        TextButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: const Text('Cancel'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Container(
+                margin: const EdgeInsets.only(right: 5),
+                width: 42,
+                height: 42,
+                decoration: BoxDecoration(
+                    border: Border.all(color: ColorConstant.orangeColor),
+                    borderRadius: BorderRadius.circular(12)),
+                child: Icon(
+                  Icons.logout_outlined,
+                  size: 23,
+                  color: ColorConstant.orangeColor,
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
       body: Column(
         children: [

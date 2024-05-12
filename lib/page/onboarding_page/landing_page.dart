@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+
 
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
@@ -8,7 +7,6 @@ import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/page/onboarding_page/widgets/screen_2.dart';
 import 'package:your_comfort_food/page/onboarding_page/widgets/screen_1.dart';
 import 'package:your_comfort_food/page/onboarding_page/widgets/screen_3.dart';
-
 
 class OnboardingPage extends StatefulWidget {
   const OnboardingPage({super.key});
@@ -20,8 +18,6 @@ class OnboardingPage extends StatefulWidget {
 class _OnboardingPageState extends State<OnboardingPage> {
   @override
   void initState() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
-        overlays: [SystemUiOverlay.bottom]);
     super.initState();
   }
 
@@ -30,6 +26,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
     PageController controller = PageController();
 
     return Scaffold(
+      backgroundColor: ColorConstant.whitishGray,
       body: Stack(
         children: [
           PageView(

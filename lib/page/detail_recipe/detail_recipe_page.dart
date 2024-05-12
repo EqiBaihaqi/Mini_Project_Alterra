@@ -10,6 +10,7 @@ import 'package:your_comfort_food/page/detail_recipe/widgets/equipment_widget.da
 import 'package:your_comfort_food/page/detail_recipe/widgets/ingredient_list_view.dart';
 import 'package:your_comfort_food/page/detail_recipe/widgets/instruction_recipe.dart';
 import 'package:your_comfort_food/page/detail_recipe/widgets/nutrition_content_widget.dart';
+
 import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/loading_widget.dart';
 
@@ -42,6 +43,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<DetailRecipeViewModel>(context);
+
     var data = provider.detailRecipeResponse;
     if (provider.isLoading) {
       return const LoadingWIdget(width: 50);
@@ -51,6 +53,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
       );
     }
     return Scaffold(
+      backgroundColor: ColorConstant.whitishGray,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         leading: Container(
@@ -70,14 +73,14 @@ class _DetailRecipeState extends State<DetailRecipe> {
           ),
         ),
         title: Text(
-          'Detail',
+          'Details',
           style: TextStyleConstant.poppinsRegular.copyWith(
               color: ColorConstant.white,
               fontWeight: FontWeight.bold,
               fontSize: 23),
         ),
         centerTitle: true,
-        toolbarHeight: 100,
+        toolbarHeight: 42,
         elevation: 0,
         backgroundColor: Colors.transparent,
       ),
@@ -168,38 +171,59 @@ class _DetailRecipeState extends State<DetailRecipe> {
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.centerLeft,
-                child: TextButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: const Text('Close'),
-                          )
-                        ],
-                        title: Text(
-                          'Nutrition Information',
-                          style: TextStyleConstant.poppinsRegular
-                              .copyWith(fontSize: 20),
-                        ),
-                        content: const NutritionContentWidget(),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) => AlertDialog(
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.pop(context);
+                                },
+                                child: const Text('Close'),
+                              )
+                            ],
+                            title: Text(
+                              'Nutrition Information',
+                              style: TextStyleConstant.poppinsRegular
+                                  .copyWith(fontSize: 20),
+                            ),
+                            content: const NutritionContentWidget(),
+                          ),
+                        );
+                      },
+                      child: Text(
+                        'Nutrition Information',
+                        style: TextStyleConstant.poppinsRegular.copyWith(
+                            fontSize: 19,
+                            color: ColorConstant.orangeColor,
+                            fontWeight: FontWeight.bold),
                       ),
-                    );
-                  },
-                  child: Text(
-                    'Nutrition Information',
-                    style: TextStyleConstant.poppinsRegular.copyWith(
-                        fontSize: 19,
-                        color: ColorConstant.orangeColor,
-                        fontWeight: FontWeight.bold),
+                    ),
                   ),
-                ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12),
+                    child: IconButton(
+                        onPressed: () {
+                          const snackBar = SnackBar(
+                            content:
+                                Text('The Content is still under development'),
+                          );
+
+                          ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        },
+                        icon: const Icon(
+                          Icons.favorite_border,
+                          size: 25,
+                        )),
+                  )
+                ],
               ),
               Divider(
                 color: ColorConstant.orangeColor,
@@ -209,7 +233,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
                 style: TextStyleConstant.poppinsRegular
                     .copyWith(fontWeight: FontWeight.bold, fontSize: 17),
               ),
-              EquipmentWidget(),
+              const EquipmentWidget(),
               Container(
                 margin: const EdgeInsets.only(right: 8, left: 8),
                 child: Row(

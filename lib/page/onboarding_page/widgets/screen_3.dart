@@ -3,7 +3,8 @@ import 'package:your_comfort_food/constant/animation_constant.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:lottie/lottie.dart';
-import 'package:your_comfort_food/page/home.dart';
+
+import 'package:your_comfort_food/page/login_page/login_page.dart';
 
 class Screen3 extends StatefulWidget {
   const Screen3({super.key});
@@ -21,7 +22,7 @@ class _Screen3State extends State<Screen3> {
       child: Column(
         children: [
           Container(
-              margin: const EdgeInsets.only(top: 150),
+              margin: const EdgeInsets.only(top: 120),
               child:
                   Lottie.asset(AnimationConstant.eat, height: 350, width: 350)),
           Container(
@@ -45,7 +46,7 @@ class _Screen3State extends State<Screen3> {
             onTap: () {
               Navigator.pushAndRemoveUntil(
                   context,
-                  MaterialPageRoute(builder: (context) => const Home()),
+                  MaterialPageRoute(builder: (context) => const LoginPage()),
                   (route) => false);
             },
             child: Container(

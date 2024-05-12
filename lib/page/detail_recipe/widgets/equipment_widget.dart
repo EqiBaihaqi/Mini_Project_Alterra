@@ -12,7 +12,7 @@ class EquipmentWidget extends StatelessWidget {
     var provider = Provider.of<DetailRecipeViewModel>(context);
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 12),
-      height: 174,
+      height: 144,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: provider.equipmentResponse.equipment?.length,
@@ -22,8 +22,8 @@ class EquipmentWidget extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 6),
-                width: 140,
-                height: 140,
+                width: 110,
+                height: 110,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
