@@ -67,7 +67,6 @@ class HomePageViewModel extends ChangeNotifier {
       notifyListeners();
     }
   }
-  
 
   RandomRecipeResponse _dairyFreeRecipeResponse = RandomRecipeResponse();
   RandomRecipeResponse get dairyFreeRecipeResponse => _dairyFreeRecipeResponse;
@@ -146,6 +145,4 @@ class HomePageViewModel extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  
 }
