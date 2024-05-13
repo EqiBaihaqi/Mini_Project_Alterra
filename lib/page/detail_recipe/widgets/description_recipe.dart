@@ -21,7 +21,7 @@ class DescriptionRecipe extends StatelessWidget {
             HtmlWidget(
               data?.summary ?? '',
               textStyle:
-                  TextStyleConstant.poppinsRegular.copyWith(fontSize: 20),
+                  TextStyleConstant.poppinsRegular.copyWith(fontSize: 15),
             )
           ],
         ),

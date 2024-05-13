@@ -86,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
               child: TextFormField(
+                key: const Key('username'),
                 controller: usernameController,
                 decoration: InputDecoration(
                     hintText: 'Username',
@@ -115,6 +116,7 @@ class _LoginPageState extends State<LoginPage> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
               child: TextFormField(
+                key: const Key('password'),
                 controller: passwordController,
                 decoration: InputDecoration(
                     errorText: _errorPassword,

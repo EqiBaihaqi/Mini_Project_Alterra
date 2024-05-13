@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
         scrolledUnderElevation: 0.0,
         toolbarHeight: 100,
         title: Text(
-          'Welcome Back, \n${providerLogin.userName}!',
+          'Welcome Back,\n${providerLogin.userName}!',
           style: TextStyleConstant.poppinsRegular
               .copyWith(fontWeight: FontWeight.bold, fontSize: 23),
         ),

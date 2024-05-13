@@ -39,7 +39,7 @@ class NutritionContentWidget extends StatelessWidget {
             ),
             ListTile(
               leading: const Iconify(
-                Emojione.fire,
+                Emojione.curry_rice,
                 size: 37,
               ),
               title: Text('Carbohydrates',
@@ -49,7 +49,7 @@ class NutritionContentWidget extends StatelessWidget {
             ),
             ListTile(
               leading: const Iconify(
-                Emojione.fire,
+                Emojione.chicken,
                 size: 37,
               ),
               title: Text('Protein',
@@ -59,7 +59,7 @@ class NutritionContentWidget extends StatelessWidget {
             ),
             ListTile(
               leading: const Iconify(
-                Emojione.fire,
+                Emojione.meat_on_bone,
                 size: 37,
               ),
               title: Text('Fat',

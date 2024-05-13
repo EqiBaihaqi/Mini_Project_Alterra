@@ -33,7 +33,7 @@ class EquipmentWidget extends StatelessWidget {
               ),
               Text(
                 data?.name ?? '',
-                style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 15),
+                style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 17),
               ),
             ],
           );

@@ -4,7 +4,7 @@ const String apiKey = "f72b2d5394f2425ebde927e746566b79";
 const String geminiApiKey = Env.apiKey;
 const String baseUrlRandomRecipe = 'https://api.spoonacular.com/recipes/random';
 const String baseUrlSearchRecipe =
-    'https://api.spoonacular.com/recipes/complexSearchyjtf';
+    'https://api.spoonacular.com/recipes/complexSearch1';
 const String baseUrlSearchIngredient =
     'https://api.spoonacular.com/recipes/findByIngredients';
 const String noImageUrl =

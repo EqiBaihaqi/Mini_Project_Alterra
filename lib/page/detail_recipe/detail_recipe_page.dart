@@ -192,7 +192,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
                             title: Text(
                               'Nutrition Information',
                               style: TextStyleConstant.poppinsRegular
-                                  .copyWith(fontSize: 20),
+                                  .copyWith(fontSize: 16),
                             ),
                             content: const NutritionContentWidget(),
                           ),
