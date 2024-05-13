@@ -24,7 +24,7 @@ class InstructionRecipe extends StatelessWidget {
               child: HtmlWidget(
                 data?.instructions ?? '',
                 textStyle:
-                    TextStyleConstant.poppinsRegular.copyWith(fontSize: 15),
+                    TextStyleConstant.poppinsRegular.copyWith(fontSize: 18),
               ),
             )
           ],
