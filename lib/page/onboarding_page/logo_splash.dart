@@ -50,7 +50,7 @@ class _SplashScreenLogoState extends State<SplashScreenLogo> {
               height: 16,
             ),
             Text(
-              'Your Comfort Food',
+              'Your Comfort Recipe',
               style: TextStyleConstant.pacifioRegular
                   .copyWith(fontWeight: FontWeight.w100),
             )

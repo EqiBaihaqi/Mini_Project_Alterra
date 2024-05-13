@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
@@ -22,8 +23,8 @@ class EquipmentWidget extends StatelessWidget {
             children: [
               Container(
                 margin: const EdgeInsets.symmetric(horizontal: 6),
-                width: 110,
-                height: 110,
+                width: 120,
+                height: 120,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
@@ -31,9 +32,14 @@ class EquipmentWidget extends StatelessWidget {
                         image:
                             NetworkImage('$baseUrlEquipment${data?.image}'))),
               ),
-              Text(
-                data?.name ?? '',
-                style: TextStyleConstant.poppinsRegular.copyWith(fontSize: 17),
+              Container(
+                alignment: Alignment.center,
+                child: Text(
+                  data?.name ?? '',
+                  style: TextStyleConstant.poppinsRegular.copyWith(
+                    fontSize: 13.5,
+                  ),
+                ),
               ),
             ],
           );

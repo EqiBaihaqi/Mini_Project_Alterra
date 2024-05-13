@@ -147,7 +147,7 @@ class _DetailRecipeState extends State<DetailRecipe> {
                     child: Text(
                       data?.title ?? '',
                       style: TextStyleConstant.poppinsRegular
-                          .copyWith(fontSize: 25, fontWeight: FontWeight.bold),
+                          .copyWith(fontSize: 23, fontWeight: FontWeight.bold),
                     )),
               ),
               Container(
