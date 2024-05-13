@@ -37,14 +37,43 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
     }
   }
 
+  bool _isBurger = false;
+  bool get isBurger => _isBurger;
+
+  bool _isPizza = false;
+  bool get isPizza => _isPizza;
+
+  bool _isFriedChick = false;
+  bool get isFriedChick => _isFriedChick;
+
+  bool _isNoodle = false;
+  bool get isNoodle => _isNoodle;
   void getBurgerSearchRecipe() async {
+    _isPizza = false;
+    _isFriedChick = false;
+    _isNoodle = false;
+    _isBurger = true;
     _isEmpty = false;
     _queryController.text = '';
     _isLoadingSearch = true;
@@ -61,7 +90,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -69,6 +112,10 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getPizzaSearchRecipe() async {
+    _isPizza = true;
+    _isFriedChick = false;
+    _isNoodle = false;
+    _isBurger = false;
     _isEmpty = false;
     _queryController.text = '';
     _isLoadingSearch = true;
@@ -85,7 +132,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -93,6 +154,10 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getNoodleSearchRecipe() async {
+    _isPizza = false;
+    _isFriedChick = false;
+    _isNoodle = true;
+    _isBurger = false;
     _isEmpty = false;
     _queryController.text = '';
     _isLoadingSearch = true;
@@ -109,7 +174,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -117,6 +196,10 @@ class SearchPageViewModel extends ChangeNotifier {
   }
 
   void getFriedChickenSearchRecipe() async {
+    _isPizza = false;
+    _isFriedChick = true;
+    _isNoodle = false;
+    _isBurger = false;
     _isEmpty = false;
     _isLoadingSearch = true;
     _errorSearch = null;
@@ -132,10 +215,37 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
     }
+  }
+
+  void popularRecipeRefresh() {
+    if (_isBurger == true) {
+      getBurgerSearchRecipe();
+    } else if (_isFriedChick == true) {
+      getFriedChickenSearchRecipe();
+    } else if (_isNoodle == true) {
+      getNoodleSearchRecipe();
+    } else {
+      getPizzaSearchRecipe();
+    }
+    notifyListeners();
   }
 }

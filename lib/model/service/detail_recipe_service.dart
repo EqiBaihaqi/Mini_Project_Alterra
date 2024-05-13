@@ -7,16 +7,12 @@ class DetailRecipeService {
 
   static Future<DetailRecipeResponse> getDetailRecipe(
       {required int? idRecipe}) async {
-    try {
-      final response = await dio
-          .get('https://api.spoonacular.com/recipes/$idRecipe/information',
-              options: Options(
-                headers: {"Content-Type": "application/json"},
-              ),
-              queryParameters: {"apiKey": apiKey, "id": idRecipe});
-      return DetailRecipeResponse.fromJson(response.data);
-    } on DioException catch (e) {
-      throw e.toString();
-    }
+    final response = await dio
+        .get('https://api.spoonacular.com/recipes/$idRecipe/information',
+            options: Options(
+              headers: {"Content-Type": "application/json"},
+            ),
+            queryParameters: {"apiKey": apiKey, "id": idRecipe});
+    return DetailRecipeResponse.fromJson(response.data);
   }
 }

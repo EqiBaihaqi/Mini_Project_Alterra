@@ -8,4 +8,6 @@ class ImageConstant {
   static String noodle = 'assets/images/noodle.jpg';
   static String friedChicken = 'assets/images/fried_chicken.jpg';
   static String backgroundIngredient = 'assets/images/background_ai.jpg';
+  static String logo1 = 'assets/images/logo1.png';
+  static String logo2 = 'assets/images/logo2.png';
 }

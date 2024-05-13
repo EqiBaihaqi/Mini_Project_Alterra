@@ -14,55 +14,53 @@ class IngredientListView extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.only(top: 8),
-      height: 320,
-      width: double.infinity,
-      decoration: BoxDecoration(
-          border: Border.all(color: ColorConstant.orangeColor),
-          borderRadius: BorderRadius.circular(10)),
-      child: ListView.builder(
-        padding: const EdgeInsets.all(0),
-        physics: const ClampingScrollPhysics(),
-        scrollDirection: Axis.vertical,
-        itemCount: provider.detailRecipeResponse?.extendedIngredients?.length,
-        itemBuilder: (context, index) {
-          var data = provider.detailRecipeResponse?.extendedIngredients?[index];
-          return Container(
-            margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
-            decoration: BoxDecoration(
-                color: ColorConstant.grayColor2,
-                borderRadius: BorderRadius.circular(12)),
-            width: double.infinity,
-            height: 86,
-            child: Align(
-              alignment: Alignment.centerLeft,
-              child: ListTile(
-                leading: Container(
-                  width: 52,
-                  height: 52,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: NetworkImage(
-                              '$baseUrlImageIngredient${data?.image}'))),
-                ),
-                title: Text(
-                  data?.name ?? '',
-                  style: TextStyleConstant.poppinsRegular.copyWith(
-                      color: ColorConstant.black,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold),
-                ),
-                trailing: Text(
-                  '${data?.amount}g',
-                  style: TextStyleConstant.poppinsRegular
-                      .copyWith(color: ColorConstant.grayColor3, fontSize: 15),
+      child: SizedBox(
+        height: 300,
+        child: ListView.builder(
+          padding: const EdgeInsets.all(0),
+          physics: const ClampingScrollPhysics(),
+          scrollDirection: Axis.vertical,
+          itemCount: provider.detailRecipeResponse?.extendedIngredients?.length,
+          itemBuilder: (context, index) {
+            var data =
+                provider.detailRecipeResponse?.extendedIngredients?[index];
+            return Container(
+              margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+              decoration: BoxDecoration(
+                  color: ColorConstant.grayColor2,
+                  borderRadius: BorderRadius.circular(12)),
+              width: double.infinity,
+              height: 86,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: ListTile(
+                  leading: Container(
+                    width: 52,
+                    height: 52,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        image: DecorationImage(
+                            fit: BoxFit.cover,
+                            image: NetworkImage(
+                                '$baseUrlImageIngredient${data?.image}'))),
+                  ),
+                  title: Text(
+                    data?.name ?? '',
+                    style: TextStyleConstant.poppinsRegular.copyWith(
+                        color: ColorConstant.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  trailing: Text(
+                    '${data?.amount}g',
+                    style: TextStyleConstant.poppinsRegular.copyWith(
+                        color: ColorConstant.grayColor1, fontSize: 15),
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

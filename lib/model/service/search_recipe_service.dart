@@ -6,19 +6,12 @@ class ServiceSearch {
   static Dio dio = Dio();
 
   static Future<SearchRecipesResponse> getSearchRecipe(String query) async {
-    try {
-      final response = await dio.get(baseUrlSearchRecipe,
-          options: Options(
-            headers: {"Content-Type": "application/json"},
-          ),
-          queryParameters: {
-            "apiKey": apiKey,
-            "query": query,
-          });
+    final response = await dio.get(baseUrlSearchRecipe,
+        options: Options(
+          headers: {"Content-Type": "application/json"},
+        ),
+        queryParameters: {"apiKey": apiKey, "query": query, "number": 25});
 
-      return SearchRecipesResponse.fromJson(response.data);
-    } on DioException catch (e) {
-      throw e.toString();
-    }
+    return SearchRecipesResponse.fromJson(response.data);
   }
 }

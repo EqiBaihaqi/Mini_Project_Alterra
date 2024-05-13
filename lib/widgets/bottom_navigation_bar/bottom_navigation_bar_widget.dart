@@ -17,7 +17,7 @@ class BottomNavCustom extends StatelessWidget {
     final navigationProvider = Provider.of<BottomNavigationProvider>(context);
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 50),
+      padding: const EdgeInsets.symmetric(horizontal: 35),
       child: FloatingNavigationBar(
           backgroundColor: ColorConstant.whitishGray,
           iconSize: 30,

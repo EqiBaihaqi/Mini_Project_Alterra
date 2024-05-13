@@ -20,15 +20,13 @@ class _RecipeAllGridViewState extends State<RecipeAllGridView> {
 
     if (provider.isLoadingRandomRecipe) {
       return const LoadingWIdget(width: 50);
-    } else if (provider.errorRandomRecipe != null) {
+    }
+    if (provider.errorRandomRecipe != null) {
       return Center(
         child: Text(provider.errorRandomRecipe!),
       );
     } else {
       return HomePageGridViewWidget(
-        onRefresh: () {
-          provider.getRandomRecipe();
-        },
         dataApi: provider.randomRecipeResponse,
         dataLength: provider.randomRecipeResponse.recipes?.length,
         error: provider.errorRandomRecipe,

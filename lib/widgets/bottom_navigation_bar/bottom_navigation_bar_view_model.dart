@@ -8,4 +8,5 @@ class BottomNavigationProvider extends ChangeNotifier {
     _currentIndex = index;
     notifyListeners();
   }
+  
 }

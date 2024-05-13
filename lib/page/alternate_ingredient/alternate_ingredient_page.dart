@@ -4,7 +4,7 @@ import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/image_constant.dart';
 import 'package:your_comfort_food/constant/text_style_constant.dart';
 import 'package:your_comfort_food/page/alternate_ingredient/alternate_ingredient_view_model.dart';
-import 'package:your_comfort_food/page/alternate_ingredient/widgets/text_response_widget.dart';
+import 'package:your_comfort_food/page/alternate_ingredient/widgets/response_ai.dart';
 
 class AlternateIngredientPage extends StatefulWidget {
   const AlternateIngredientPage({super.key});
@@ -27,7 +27,7 @@ class _AlternateIngredientPageState extends State<AlternateIngredientPage> {
     var provider = Provider.of<AlternateIngredientViewModel>(context);
 
     return Scaffold(
-      resizeToAvoidBottomInset: true,
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       appBar: AppBar(
         title: Text(
@@ -50,9 +50,10 @@ class _AlternateIngredientPageState extends State<AlternateIngredientPage> {
                     Colors.black.withOpacity(0.4), BlendMode.darken),
                 fit: BoxFit.cover,
                 image: AssetImage(ImageConstant.backgroundIngredient))),
-        child: SingleChildScrollView(
-          child: Container(
-            margin: const EdgeInsets.only(top: 160),
+        child: Container(
+          margin: const EdgeInsets.only(top: 160),
+          child: SingleChildScrollView(
+            physics: const NeverScrollableScrollPhysics(),
             child: Column(
               children: [
                 Text(
@@ -99,14 +100,13 @@ class _AlternateIngredientPageState extends State<AlternateIngredientPage> {
                   ),
                 ),
                 Container(
-                  margin: const EdgeInsets.only(left: 30, right: 30, top: 26),
-                  width: double.infinity,
-                  height: 300,
-                  decoration: BoxDecoration(
-                      color: ColorConstant.white,
-                      borderRadius: BorderRadius.circular(20)),
-                  child:const TextResponseWidget() 
-                )
+                    margin: const EdgeInsets.only(left: 30, right: 30, top: 26),
+                    width: double.infinity,
+                    height: 300,
+                    decoration: BoxDecoration(
+                        color: ColorConstant.white,
+                        borderRadius: BorderRadius.circular(20)),
+                    child: const ResponseAI())
               ],
             ),
           ),

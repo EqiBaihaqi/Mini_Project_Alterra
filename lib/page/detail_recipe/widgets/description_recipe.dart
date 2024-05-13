@@ -15,20 +15,14 @@ class DescriptionRecipe extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       width: double.infinity,
-      height: 320,
-      decoration: BoxDecoration(
-          border: Border.all(color: ColorConstant.orangeColor),
-          borderRadius: BorderRadius.circular(10)),
+      height: 300,
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: HtmlWidget(
-                data?.summary ?? '',
-                textStyle:
-                    TextStyleConstant.poppinsRegular.copyWith(fontSize: 20),
-              ),
+            HtmlWidget(
+              data?.summary ?? '',
+              textStyle:
+                  TextStyleConstant.poppinsRegular.copyWith(fontSize: 18),
             )
           ],
         ),

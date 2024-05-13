@@ -60,7 +60,7 @@ class _SearchPageState extends State<SearchPage> {
                             borderRadius: BorderRadius.circular(12)),
                         child: IconButton(
                             onPressed: () {
-                              provider.getSearchRecipe();
+                              provider.popularRecipeRefresh();
                             },
                             icon: Icon(
                               Icons.refresh_rounded,

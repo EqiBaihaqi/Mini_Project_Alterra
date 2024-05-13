@@ -16,22 +16,16 @@ class InstructionRecipe extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(8),
       width: double.infinity,
-      height: 320,
-      decoration: BoxDecoration(
-          border: Border.all(color: ColorConstant.orangeColor),
-          borderRadius: BorderRadius.circular(10)),
+      height: 300,
       child: SingleChildScrollView(
         child: Column(
           children: [
             Align(
               alignment: Alignment.topLeft,
-              child: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: HtmlWidget(
-                  data?.instructions ?? '',
-                  textStyle:
-                      TextStyleConstant.poppinsRegular.copyWith(fontSize: 20),
-                ),
+              child: HtmlWidget(
+                data?.instructions ?? '',
+                textStyle:
+                    TextStyleConstant.poppinsRegular.copyWith(fontSize: 18),
               ),
             )
           ],

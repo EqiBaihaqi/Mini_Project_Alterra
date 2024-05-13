@@ -22,7 +22,21 @@ class AlternateIngredientViewModel extends ChangeNotifier {
       _response = response;
       notifyListeners();
     } on DioException catch (e) {
-      _errorMessage = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorMessage = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorMessage =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorMessage =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorMessage =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorMessage = "Something went wronng, please try again later";
+      }
+
       notifyListeners();
     } finally {
       _isLoading = false;
