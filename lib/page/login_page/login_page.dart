@@ -50,7 +50,7 @@ class _LoginPageState extends State<LoginPage> {
           children: [
             Container(
               margin: const EdgeInsets.only(
-                top: 40,
+                top: 20,
                 left: 30,
               ),
               child: Align(
@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             Container(
-              margin: const EdgeInsets.only(left: 30, bottom: 57),
+              margin: const EdgeInsets.only(left: 30, bottom: 27),
               child: Align(
                 alignment: Alignment.topLeft,
                 child: Text(
@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
               height: 12,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 3),
               child: TextFormField(
                 controller: usernameController,
                 decoration: InputDecoration(

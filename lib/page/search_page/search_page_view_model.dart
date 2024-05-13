@@ -37,7 +37,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -76,7 +90,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -104,7 +132,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -132,7 +174,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();
@@ -159,7 +215,21 @@ class SearchPageViewModel extends ChangeNotifier {
       }
       notifyListeners();
     } on DioException catch (e) {
-      _errorSearch = e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorSearch = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorSearch =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorSearch =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorSearch =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorSearch = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoadingSearch = false;
       notifyListeners();

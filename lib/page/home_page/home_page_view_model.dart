@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:your_comfort_food/model/random_recipes_response.dart';
 import 'package:your_comfort_food/model/service/recipe_service.dart';
+import 'package:dio/dio.dart';
 
 enum RecipeType {
   all,
@@ -29,9 +30,22 @@ class HomePageViewModel extends ChangeNotifier {
 
       _randomRecipeResponse = response;
       notifyListeners();
-    } catch (e) {
-      _errorRandomRecipe = e.toString();
-      notifyListeners();
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) {
+        _errorRandomRecipe =
+            "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorRandomRecipe =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorRandomRecipe =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorRandomRecipe =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorRandomRecipe = "Something went wronng, please try again later";
+      }
     } finally {
       _isLoadingRandomRecipe = false;
       notifyListeners();
@@ -59,8 +73,22 @@ class HomePageViewModel extends ChangeNotifier {
 
       _veganRecipeResponse = response;
       notifyListeners();
-    } catch (e) {
-      _errorVeganRecipe = e.toString();
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) {
+        _errorVeganRecipe =
+            "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorVeganRecipe =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorVeganRecipe =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorVeganRecipe =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorVeganRecipe = "Something went wronng, please try again later";
+      }
       notifyListeners();
     } finally {
       _isLoadingVeganRecipe = false;
@@ -89,8 +117,22 @@ class HomePageViewModel extends ChangeNotifier {
 
       _dairyFreeRecipeResponse = response;
       notifyListeners();
-    } catch (e) {
-      _errorDairyFreeRecipe = e.toString();
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) {
+        _errorDairyFreeRecipe =
+            "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorDairyFreeRecipe =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorDairyFreeRecipe =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorDairyFreeRecipe =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorDairyFreeRecipe = "Something went wronng, please try again later";
+      }
       notifyListeners();
     } finally {
       _isLoadingDairyFreeRecipe = false;

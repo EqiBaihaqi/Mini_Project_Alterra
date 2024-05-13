@@ -21,6 +21,10 @@ class _ResponseAIState extends State<ResponseAI> {
           width: 45,
         ),
       );
+    } else if (provider.errorMessage != null) {
+      return Center(
+        child: Text(provider.errorMessage ?? ''),
+      );
     } else {
       return Padding(
         padding: const EdgeInsets.all(8.0),

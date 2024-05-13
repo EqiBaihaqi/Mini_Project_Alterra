@@ -36,7 +36,21 @@ class DetailRecipeViewModel extends ChangeNotifier {
       _detailRecipeResponse = response;
       notifyListeners();
     } on DioException catch (e) {
-      throw e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorDetail = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorDetail =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorDetail =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorDetail =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorDetail = "Something went wronng, please try again later";
+      }
+      notifyListeners();
     } finally {
       _isLoading = false;
     }
@@ -90,31 +104,68 @@ class DetailRecipeViewModel extends ChangeNotifier {
   NutritionRecipeResponse get nutritionRecipeResponse =>
       _nutritionRecipeResponse;
 
-  String? _errorNutrition;
-  String? get errorNutrition => _errorNutrition;
   void getNutrition(int? idRecipe) async {
+    _isLoading = true;
     _nutritionRecipeResponse = NutritionRecipeResponse();
+    _errorDetail = null;
     notifyListeners();
     try {
       final response = await NutritionRecipeService.getNutrition(idRecipe);
 
       _nutritionRecipeResponse = response;
     } on DioException catch (e) {
-      throw e.toString();
+      if (e.response?.statusCode == 404) {
+        _errorDetail = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorDetail =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorDetail =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorDetail =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorDetail = "Something went wronng, please try again later";
+      }
+      notifyListeners();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
     }
   }
-  
-EquipmentResponse _equipmentResponse = EquipmentResponse();
-EquipmentResponse get equipmentResponse => _equipmentResponse;
 
-void getEquipment(int? idRecipe) async {
-  try {
-    final response = await EquipmentService.getNutrition(idRecipe);
+  EquipmentResponse _equipmentResponse = EquipmentResponse();
+  EquipmentResponse get equipmentResponse => _equipmentResponse;
 
-    _equipmentResponse = response;
+  void getEquipment(int? idRecipe) async {
+    _isLoading = true;
+    _errorDetail = null;
+    _equipmentResponse = EquipmentResponse();
+    notifyListeners();
+    try {
+      final response = await EquipmentService.getNutrition(idRecipe);
 
-  } on DioException catch (e) {
-    throw e.toString();
+      _equipmentResponse = response;
+    } on DioException catch (e) {
+      if (e.response?.statusCode == 404) {
+        _errorDetail = "Resource not found, please check the url or try again";
+      } else if (e.response?.statusCode == 402) {
+        _errorDetail =
+            "Payment Required: To access this page or resource, please complete the payment process. If you believe this is an error, please contact support.";
+      } else if (e.response?.statusCode == 401) {
+        _errorDetail =
+            "Unauthorized Access: You don't have permission to view this page or resource.";
+      } else if (e.response?.statusCode == 403) {
+        _errorDetail =
+            "Access Forbidden: You do not have permission to access this page or resource. If you believe this is an error, please contact the administrator for assistance.";
+      } else {
+        _errorDetail = "Something went wronng, please try again later";
+      }
+      notifyListeners();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
-}
 }
