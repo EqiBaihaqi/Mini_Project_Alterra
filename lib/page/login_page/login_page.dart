@@ -138,9 +138,8 @@ class _LoginPageState extends State<LoginPage> {
                   passwordController.text = value;
                   if (passwordController.text.isEmpty) {
                     _errorPassword = 'Password cannot be empty';
-                  } else if (passwordController.text.length <= 2) {
-                    _errorPassword =
-                        'Password should at least have more than 2 letter';
+                  } else if (passwordController.text.length <= 7) {
+                    _errorPassword = 'Password should at least have 8 letter';
                   } else {
                     _errorPassword = null;
                   }
