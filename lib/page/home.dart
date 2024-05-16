@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
-import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/page/alternate_ingredient/alternate_ingredient_page.dart';
 import 'package:your_comfort_food/page/home_page/home_page.dart';
 import 'package:your_comfort_food/page/home_page/home_page_view_model.dart';
-import 'package:your_comfort_food/page/login_page/login_page.dart';
-import 'package:your_comfort_food/page/login_page/login_view_model.dart';
 import 'package:your_comfort_food/page/search_page/search_page.dart';
 import 'package:your_comfort_food/widgets/bottom_navigation_bar/bottom_navigation_bar_view_model.dart';
 import 'package:your_comfort_food/widgets/bottom_navigation_bar/bottom_navigation_bar_widget.dart';
@@ -36,7 +32,6 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    final providerLogin = Provider.of<LoginPageViewModel>(context);
     final navigationProvider = Provider.of<BottomNavigationProvider>(context);
     List<Widget> body = [
       const HomePage(),
