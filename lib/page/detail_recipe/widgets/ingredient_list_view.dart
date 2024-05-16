@@ -12,7 +12,7 @@ class IngredientListView extends StatelessWidget {
   Widget build(BuildContext context) {
     final provider = Provider.of<DetailRecipeViewModel>(context);
 
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(8.0),
       child: SizedBox(
         height: 300,
