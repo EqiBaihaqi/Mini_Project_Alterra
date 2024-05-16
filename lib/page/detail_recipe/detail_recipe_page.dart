@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
 import 'package:your_comfort_food/constant/constant.dart';
@@ -10,10 +9,8 @@ import 'package:your_comfort_food/page/detail_recipe/widgets/equipment_widget.da
 import 'package:your_comfort_food/page/detail_recipe/widgets/ingredient_list_view.dart';
 import 'package:your_comfort_food/page/detail_recipe/widgets/instruction_recipe.dart';
 import 'package:your_comfort_food/page/detail_recipe/widgets/nutrition_content_widget.dart';
-
 import 'package:your_comfort_food/widgets/button_category_widget.dart';
 import 'package:your_comfort_food/widgets/loading_widget.dart';
-
 class DetailRecipe extends StatefulWidget {
   final int? idRecipe;
   const DetailRecipe({super.key, required this.idRecipe});

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 import 'package:provider/provider.dart';
 import 'package:your_comfort_food/constant/color_constant.dart';
@@ -9,6 +10,7 @@ import 'package:your_comfort_food/page/home_page/widgets/recipe_all.dart';
 import 'package:your_comfort_food/page/home_page/widgets/recipe_dairy_free.dart';
 import 'package:your_comfort_food/page/home_page/widgets/recipe_vegan.dart';
 import 'package:your_comfort_food/page/home_page/widgets/search_container_widget.dart';
+import 'package:your_comfort_food/page/login_page/login_page.dart';
 import 'package:your_comfort_food/page/login_page/login_view_model.dart';
 import 'package:your_comfort_food/page/search_page/search_page.dart';
 import 'package:your_comfort_food/page/search_page/search_page_view_model.dart';
@@ -48,6 +50,57 @@ class _HomePageState extends State<HomePage> {
           style: TextStyleConstant.poppinsRegular
               .copyWith(fontWeight: FontWeight.bold, fontSize: 23),
         ),
+        actions: [
+          GestureDetector(
+            onTap: () {
+               showDialog(
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text('Log out'),
+                  content: const Text('You sure want to log out?'),
+                  actions: [
+                    TextButton(
+                      onPressed: () {
+                        providerLogin.logOut();
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const LoginPage()),
+                            (route) => false);
+                      },
+                      child: const Text('Log Out'),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Text('Cancel'),
+                    ),
+                  ],
+                );
+              },
+            );
+            },
+            child: Container(
+              margin: const EdgeInsets.only(right: 25),
+              width: 42,
+              height: 42,
+              decoration: BoxDecoration(
+                  color: ColorConstant.whitishGray,
+                  borderRadius: BorderRadius.circular(12),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5), //color of shadow
+                      spreadRadius: 2.5, //spread radius
+                      blurRadius: 3, // blur radius
+                      offset: const Offset(0, 0),
+                    )
+                  ]),
+              child: const Icon(Icons.logout),
+            ),
+          )
+        ],
       ),
       body: Column(
         children: [

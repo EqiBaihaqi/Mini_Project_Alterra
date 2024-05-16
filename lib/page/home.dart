@@ -44,48 +44,9 @@ class _HomeState extends State<Home> {
       const AlternateIngredientPage(),
     ];
     return Scaffold(
-        extendBody: true,
-        body: body[navigationProvider.currentIndex],
-        bottomNavigationBar: const BottomNavCustom(),
-        floatingActionButton: FloatingActionButton(
-          shape:
-              BeveledRectangleBorder(borderRadius: BorderRadius.circular(25)),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: const Text('Log out'),
-                  content: const Text('You sure want to log out?'),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        providerLogin.logOut();
-                        Navigator.pushAndRemoveUntil(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const LoginPage()),
-                            (route) => false);
-                      },
-                      child: const Text('Log Out'),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Text('Cancel'),
-                    ),
-                  ],
-                );
-              },
-            );
-          },
-          backgroundColor: ColorConstant.whitishGray,
-          child: Icon(
-            Icons.logout_outlined,
-            color: ColorConstant.orangeColor2,
-            size: 27,
-          ),
-        ));
+      extendBody: true,
+      body: body[navigationProvider.currentIndex],
+      bottomNavigationBar: const BottomNavCustom(),
+    );
   }
 }
