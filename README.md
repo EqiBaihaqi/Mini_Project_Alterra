@@ -37,10 +37,10 @@ Flutter Package :
 - lottie
 - smooth_page_indicator
 
-![home page](https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/e4cbe8f7-a4f0-4117-ae69-54e9eb25a1e7)
-![details 1](https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/2039c79e-6c62-491a-b6bb-cae20a34fb3d)
-![search recipe](https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/cd0f401b-bc3d-48ad-84a3-e5737b96a2ad)
-![onBoard 2](https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/00bc760a-ba70-426d-894a-0719b0877f01)
+<img src="https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/e4cbe8f7-a4f0-4117-ae69-54e9eb25a1e7" width="300" height="600" alt="home page"/>
+<img src="https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/2039c79e-6c62-491a-b6bb-cae20a34fb3d" width="300" height="600" alt="details 1"/>
+<img src="https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/cd0f401b-bc3d-48ad-84a3-e5737b96a2ad" width="300" height="600" alt="search recipe"/>
+<img src="https://github.com/EqiBaihaqi/Your_Comfort_Recipe/assets/95467302/00bc760a-ba70-426d-894a-0719b0877f01" width="300" height="600" alt="onBoard 2"/>
 
 
 
