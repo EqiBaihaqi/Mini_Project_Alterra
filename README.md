@@ -1,6 +1,6 @@
-# Project Name
+# Your Comfort Recipe
 
-## About Project
+## About App
 Aplikasi ‘Your Comfort Recipe' adalah sebuah aplikasi yang menyediakan berbagai macam resep makanan yang dapat memudahkan setiap orang dalam memilih serta mencoba resep-resep yang ada.
 
 ## Features
